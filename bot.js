@@ -274,7 +274,7 @@ client.on("message", msg => {
            if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
            var embed = new Discord.RichEmbed()
            .setTitle("Invite BlueBot")
-           .setURL("https://discordapp.com/oauth2/authorize?client_id=" + `${client.user.id}` + "&permissions=8&scope=bot")
+           .setURL("https://discordapp.com/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot" + `${client.user.id}` + "&permissions=8&scope=bot")
            .setTimestamp()
            .setColor("RANDOM")
            message.channel.send({embed})
@@ -470,9 +470,9 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -support ➾ server support link
 
-❖ -msg for send msg foe some one by bot
+❖ -msg ➾  for send msg for someone by bot
 
-❖ -send to send message with react in it to channel 
+❖ -send ➾  to send message with react in it to channel 
 
 ==================================================================
 
