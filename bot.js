@@ -474,6 +474,8 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -support ➾ server support link
 
+❖ -sug <Suggestion> ➾ for Suggestions 
+
 ❖ -msg ➾  for send msg for someone by bot
 
 ❖ -send ➾  to send message with react in it to channel 
