@@ -447,6 +447,8 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -unmute <user> ➾ unmute from server
 
+❖ -kick <user> <reason> ➾ kick from server
+
 ❖ -clear <number> ➾ clear chat
 
 ❖ -ban <mention> <reason> ➾ ban member from server
