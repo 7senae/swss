@@ -615,6 +615,62 @@ let embed = new Discord.RichEmbed()
 
 
 
+client.on('message', message => {
+    if(message.author.bot) return;
+    if(message.content.type === 'dm') return;
+    
+    var command = message.content.toLowerCase().split(" ")[0];
+    var args = message.content.split(" ");
+    
+    var userID = args[1];
+    
+    if(command == prefix + 'unban') {
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('انت لا تمتلك الصلاحية الكافيه');
+        if(!userID) return  message.channel.send('**اكتب ايدي الشخص**');
+        if(isNaN(userID)) return message.reply('**يجب ان يكون ايدي الشخص من ارقام فقط**');
+        if(userID.length < 16) return message.reply('**هذا ليس ايدي شخص**');
+        message.guild.fetchBans().then(bans => {
+            var Found = bans.find(m => m.id === userID);
+            if(!Found) return message.reply('**هذا الشخص ليس لديه باند في هذا السيرفر**');
+            message.guild.unban(userID);
+            message.channel.send(`:white_check_mark: <@${userID}> **unbanned from the server !**`);
+        })
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
