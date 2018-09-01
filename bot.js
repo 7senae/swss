@@ -524,51 +524,20 @@ message.channel.send('**تم الارسال في الخاص**');
 
 
   
-if(message.content == prefix+"ban"){
-if(!message.member.hasPermission("ADMINISTRATOR"))
-
-        return message.reply("Sorry, you don't have permissions to use this!");
-
-
-      member = message.mentions.members.first();
-
-      if(!member)
-
-        return message.reply("Please mention a valid member of this server");
-
-
-      if(!member.bannable) 
-
-        return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
-
-
-      reason = args.slice(1).join(' ');
-
-      if(!reason) reason = "No reason provided";
-
-
-        await member.ban(reason)
-
-        .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-
-      message.chanel.send(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+client.on("message", async message => {
+    var command = message.content.toLowerCase().split(" ")[0];
+    var member = message.mentions.members.first();
+    var reason = message.content.split(" ").slice(2).join(' ');
+    
+    if(command == prefix + 'ban') {
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply("Sorry, you don't have permissions to use this!");
+        if(!member)return message.reply("Please mention a valid member of this server");
+        if(!member.bannable) return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+        if(!reason) reason = "No reason provided";
+        await member.ban(reason).catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+        message.chanel.send(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+    }
+});
 
 
 
