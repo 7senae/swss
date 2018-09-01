@@ -321,7 +321,7 @@ client.on("message", message => {
         .setThumbnail(message.guild.iconURL)
         .setColor("RANDOM")
 .setDescription(`**
-طµط§ط­ط¨ ط§ظ„ط³ظٹط±ظپط±  :key: \` ${message.guild.owner.user.username} \`                                        
+صاحب السيرفر :key: \` ${message.guild.owner.user.username} \`                                        
 ط£ط¹ط¶ط§ط، ط§ظ„ط³ظٹط±ظپط± :bar_chart: \` ${message.guild.memberCount}\`
                                   ط±ظˆظ…ط§طھ ط§ظ„ط³ظٹط±ظپط± 
 \`#\`${message.guild.channels.filter(m => m.type === 'text').size} \`ًں”ˆ\`${message.guild.channels.filter(m => m.type === 'voice').size}
