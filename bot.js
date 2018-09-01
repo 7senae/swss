@@ -468,6 +468,10 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -server ➾ server informations
 
+❖ make room with name <welcome> ➾ for join-leave log
+
+❖ -member ➾ members info
+
 ❖ -own ➾ bot owner
 
 ❖ -invite ➾ bot invite link
