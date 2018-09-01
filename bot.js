@@ -313,27 +313,30 @@ message.channel.send(`**#-  ${args}**`);
 
 
 
+  bot.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "server") return;
+  let prefix = botconfig.prefix;
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray.slice(1);
 
-client.on("message", message => {
-    
-    if(message.content.startsWith(prefix + "server")) {
-        if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("**الأمر للاداره فقط **");
-        const starEmbed = new Discord.RichEmbed()
-        .setAuthor(message.guild.name, message.guild.iconURL)
-        .setThumbnail(message.guild.iconURL)
-        .setColor("RANDOM")
-.setDescription(`**
-صاحب السيرفر  :key: \` ${message.guild.owner.user.username} \`                                        
-أعضاء السيرفر :bar_chart: \` ${message.guild.memberCount}\`
-                                  رومات السيرفر 
-\`#\`${message.guild.channels.filter(m => m.type === 'text').size} \`🔈\`${message.guild.channels.filter(m => m.type === 'voice').size}
- رتب السيرفر :scroll: 
-${message.guild.roles.size}
-**  `)
-        message.channel.send(starEmbed)
-    }
-});
+if(cmd === `${prefix}serverinfo`);
+let sicon = message.guild.displyAvatarURL;
+let serverEmbed = new Discord.RichEmbed()
+.setDescription("``Server Information``")
+.addField("Server Name", message.guild.name)
+.addField("Created On", message.guild.createdAt)
+.addField("You Joined", message.member.joinedAt)
+.addField("Total Members", message.guild.memberCount)
+.addField("Server Owner", message.guild.owner.user.username)
+.addField("Rooms", message.guild.channels.size)
+.addField("Roles", message.guild.roles.size)
+.addField("Region", message.guild.region)
+.addField("Server ID", message.guild.id);
 
+return message.channel.send(serverEmbed);
+})
+  
 
 
 
