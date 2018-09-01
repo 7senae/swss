@@ -549,13 +549,11 @@ client.on('message', message => {
 
 
 
-client.on('message', msg => {
-  if(msg.content === 'ping')
-              setTimeout(function() {  
-msg.reply('pong')
-              }, 10000)
+  client.on('message', msg => {
+  if(msg.content === 'رسالة')
+  msg.reply('رد')
 });
-
+  
 
 
 
