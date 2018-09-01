@@ -322,10 +322,10 @@ client.on("message", message => {
         .setColor("RANDOM")
 .setDescription(`**
 صاحب السيرفر :key: \` ${message.guild.owner.user.username} \`                                        
-ط£ط¹ط¶ط§ط، ط§ظ„ط³ظٹط±ظپط± :bar_chart: \` ${message.guild.memberCount}\`
-                                  ط±ظˆظ…ط§طھ ط§ظ„ط³ظٹط±ظپط± 
+عدد اعضاء السيرفر :bar_chart: \` ${message.guild.memberCount}\`
+                                  رومات السيرفر 
 \`#\`${message.guild.channels.filter(m => m.type === 'text').size} \`ًں”ˆ\`${message.guild.channels.filter(m => m.type === 'voice').size}
- ط±طھط¨ ط§ظ„ط³ظٹط±ظپط± :scroll: 
+ رتب السيرفر :scroll: 
 ${message.guild.roles.size}
 **  `)
         message.channel.send(starEmbed)
