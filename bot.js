@@ -454,6 +454,8 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -ban <mention> <reason> ➾ ban member from server
 
+❖ -unban <id> ➾ unban from server
+
 ╔[❖════════════❖]╗
             General  Commands
 ╚[❖════════════❖]╝
@@ -678,27 +680,6 @@ client.on('message', message => {
 
 
 
-client.on('guildMemberRemove', member => {
-let channel = member.guild.channels.find('name', 'welcome');
-let memberavatar = member.user.avatarURL
-  if (!channel) return; 
-let embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setThumbnail(memberavatar)
-    .addField('🎽 | الاسم :  ',`${member}`)
-    .addField('📢 | لقد غادر:' , `لقد خرج منا عضو هو , ${member}:cry: `)
-    .addField('🆔 | الايدي :', "**[" + `${member.id}` + "]**" )
-            .addField('➡| تبقا',`${member.guild.memberCount}`)
-           
-              .addField("الاسم:",`<@` + `${member.id}` + `>`, true)
-                
-                                 .addField('شكرا لدخولك سيرفر', `${member.guild.name}`,true)
-                                   
- .setFooter("Top Bot")
-    .setTimestamp()
-
-  channel.sendEmbed(embed);
-});
 
 
 
