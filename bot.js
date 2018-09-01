@@ -560,7 +560,7 @@ client.on('message', message => {
 
 client.on('message' , message => {
   
-if (message.content.startsWith("$content")) {
+if (message.content.startsWith("-sug")) {
           if(!message.channel.guild) return message.reply('هذا الامر للسيرفرات فقط')
       if (message.author.bot) return;
             if (!message.channel.guild) return;
