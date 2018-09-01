@@ -678,7 +678,20 @@ client.on('message', message => {
 
 
 
-
+client.on('guildMemberAdd', member => {
+    var welcomeChannel = member.guild.channels.find(c => c.name === 'welcome');
+    if(!welcomeChannel) return;
+    
+    let welcomeMessage = new Discord.RichEmbed()
+    .setThumbnail(member.avatarURL)
+    .addField(':loudspeaker: | لقد دخل:' member)
+    .addField(':id: | الايدي:' `**[${member.id}]**`)
+    .addField(':arrow_right: | العضو رقم:' member.guild.memberCount)
+    .setTimestamp()
+    .setFooter(client.user.username)
+    
+    welcomeChannel.send(welcomeMessage);
+});
 
 
 
