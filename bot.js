@@ -679,6 +679,27 @@ client.on('message', message => {
 
 
 
+client.on('guildMemberAdd', member => {
+let channel = member.guild.channels.find('name', 'welcome');
+let memberavatar = member.user.avatarURL
+  if (!channel) return; 
+let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setThumbnail(memberavatar)
+    .addField('🎽 | الاسم :  ',`${member}`)
+    .addField('📢 | انضم:' , `انضم عندنا عضو جديد , ${member}:grinning:  `)
+    .addField('🆔 | الايدي :', "**[" + `${member.id}` + "]**" )
+            .addField('➡| اصبحوا',`${member.guild.memberCount}`)
+           
+              .addField("الاسم:",`<@` + `${member.id}` + `>`, true)
+                
+                                 .addField('شكرا لدخولك سيرفر', `${member.guild.name}`,true)
+                                   
+ .setFooter("BlueBot")
+    .setTimestamp()
+
+  channel.sendEmbed(embed);
+});
 
 
 
