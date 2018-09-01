@@ -558,7 +558,31 @@ client.on('message', message => {
 
 
 
+client.on('message' , message => {
+  
+if (message.content.startsWith("$content")) {
+          if(!message.channel.guild) return message.reply('هذا الامر للسيرفرات فقط')
+      if (message.author.bot) return;
+            if (!message.channel.guild) return;
+            let args = message.content.split(" ").slice(1).join(" ");
 
+                var xsatt = new Discord.RichEmbed()
+                .addField('** الـسيرفر**', `${message.guild.name}`,true)
+            .addField(' **الـمرسل **', `${message.author.username}#${message.author.discriminator}`,true)
+            .addField(' **الرسالة** ', args)
+              .setThumbnail(message.guild.iconURL)
+              .setColor('RANDOM')
+              client.users.get("349095859859881984").send({embed: xsatt});
+
+            let embed = new Discord.RichEmbed()
+               .setAuthor(message.author.username, message.author.avatarURL)
+               .setColor("RANDOM")
+               .setDescription(' ✅ | **__ تم ارسال الأقتراح الى صاحب البوت __**')
+               .setThumbnail(message.author.avatarURL)
+
+
+          message.channel.send(embed);
+        }});
 
 
 
