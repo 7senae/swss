@@ -452,6 +452,8 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -clear <number>
 
+❖ -ban <mention> <reason> ➾ ban member from server
+
 ╔[❖════════════❖]╗
             General  Commands
 ╚[❖════════════❖]╝
@@ -521,36 +523,36 @@ message.channel.send('**تم الارسال في الخاص**');
 
 
 
-  client.on('message', message => {
-  if (message.author.codes) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "ban") {
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
-         
-  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تملك الصلاحيات المطلوبه**");
-  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
-  let user = message.mentions.users.first();
   
-  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
-  if (!message.guild.member(user)
-  .bannable) return message.reply("**يجب ان تكون رتبة البوت اعلي من رتبه الشخص المراد تبنيدة**");
+If(message.content == prefix+"-"){
+//if(!message.member.hasPermission("ADMINISTRATOR"))
+
+        return message.reply("Sorry, you don't have permissions to use this!");
 
 
-  message.guild.member(user).ban(7, user);
+      member = message.mentions.members.first();
 
-message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! :airplane: **  `)
+      if(!member)
 
+        return message.reply("Please mention a valid member of this server");
+
+
+      if(!member.bannable) 
+
+        return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+
+
+      reason = args.slice(1).join(' ');
+
+      if(!reason) reason = "No reason provided";
+
+
+        await member.ban(reason)
+
+        .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+
+      message.chanel.send(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
 }
-});
-  
-
-
 
 
 
