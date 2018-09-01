@@ -274,7 +274,7 @@ client.on("message", msg => {
            if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
            var embed = new Discord.RichEmbed()
            .setTitle("Invite BlueBot")
-           .setURL("https://discordapp.com/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot" + `${client.user.id}` + "&permissions=8&scope=bot")
+           .setURL("https://discordapp.com/api/oauth2/authorize?client_id=<bot_id>8&scope=bot&permissions=8" + `${client.user.id}` + "&permissions=8&scope=bot")
            .setTimestamp()
            .setColor("RANDOM")
            message.channel.send({embed})
@@ -550,8 +550,8 @@ client.on('message', message => {
 
 
   client.on('message', msg => {
-  if(msg.content === 'رسالة')
-  msg.reply('رد')
+  if(msg.content === 'ping')
+  msg.reply('pong')
 });
   
 
