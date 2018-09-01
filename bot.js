@@ -311,7 +311,6 @@ message.channel.send(`**#-  ${args}**`);
 });
 
 
-
   bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
@@ -319,7 +318,7 @@ message.channel.send(`**#-  ${args}**`);
   let messageArray = message.content.split(" ");
   let cmd = messageArray.slice(1);
 
-if(cmd === `-{prefix}server`);
+if(cmd === `${prefix}serverinfo`);
 let sicon = message.guild.displyAvatarURL;
 let serverEmbed = new Discord.RichEmbed()
 .setDescription("``Server Information``")
@@ -335,8 +334,11 @@ let serverEmbed = new Discord.RichEmbed()
 
 return message.channel.send(serverEmbed);
 })
-  )
   
+
+
+
+
 
 
 
