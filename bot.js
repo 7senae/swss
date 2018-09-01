@@ -641,6 +641,34 @@ client.on('message', message => {
 
 
 
+client.on('message', message => {
+    if(message.author.bot) return;
+    if(message.content.type === 'dm') return;
+    
+    var command = message.content.toLowerCase().split(" ")[0];
+    
+    if(command == prefix + 'member') {
+        var memberCount = message.guild.memberCount;
+        var memberOnline = message.guild.members.filter(m => m.presence.status === 'online').size;
+        var memberIdle = message.guild.members.filter(m => m.presence.status === 'idle').size;
+        var memberDnd = message.guild.members.filter(m => m.presence.status === 'dnd').size;
+        var memberOffline = message.guild.members.filter(m => m.presence.status === 'offline').size;
+        var totalMemberOnline = memberOnline + memberIdle + memberDnd;
+        
+        let alatMember = new Discord.RichEmbed()
+        .setTitle(':white_check_mark: **حالات الاعضاء**')
+        .setColor('RANDOM')
+        .addField(`:green_heart: أونلاين: ${memberOnline}`, '-', true)
+        .addField(`:yellow_heart: خامل: ${memberIdle}`, '-', true)
+        .addField(`:heart: مشغول: ${memberDnd}`, '-', true)
+        .addField(`:black_heart: اوفلاين: ${memberOffline}`, '-', true)
+        .addField(`:heavy_plus_sign: مجموع الاونلاين: ${totalMemberOnline}`, '-', true)
+        .addField(`:blue_heart: الكل: ${memberCount}`, '-', true)
+        .setImage(message.guild.iconURL)
+        
+        message.channel.send(alatMember);
+    }
+});
 
 
 
