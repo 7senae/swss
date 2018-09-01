@@ -466,7 +466,7 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -server ➾ server informations
 
-❖ -bot ➾ bot informations 
+❖ -own ➾ bot owner
 
 ❖ -invite ➾ bot invite link
 
@@ -492,36 +492,32 @@ bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=483499229
 });  
  
 
+  client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "own") {
 
 
- if(message.author.bot) return;
-  if(message.channel.type === 'dm') return;
-  if(message.content.startsWith(prefix + "bot")) {
-    let ramUsage = (process.memoryUsage().rss / 1048576).toFixed();
-    let upTime = timeCon(process.uptime());
-    let createdAt = moment(client.user.createdAt).fromNow();
+ message.author.sendMessage(`
+ 
+ __~~BlueBot~~__
+╭━━╮╭╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮
+┃╭╮┃┃┃╱╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮
+┃╰╯╰┫┃╭╮╭┳━━┫╰╯╰┳━┻╮╭╯
+┃╭━╮┃┃┃┃┃┃┃━┫╭━╮┃╭╮┃┃
+┃╰━╯┃╰┫╰╯┃┃━┫╰━╯┃╰╯┃╰╮
+╰━━━┻━┻━━┻━━┻━━━┻━━┻━╯
+ __created By__: iiBlueGamer295YT| SK ?#0548
 
-let m = await message.channel.send(`\`\`\`asciidoc\n= Normal Information =
-Creator :: ${client.users.get("470282325083815956").username} - ${createdAt}
-Ping :: ${client.pings[0]} ms
-UpTime :: ${upTime}
-= Servers Information =
-Servers :: ${client.guilds.size}
-Users :: ${client.users.size}
-Channels :: ${client.channels.size}
-= Developer Information =
-NodeJS :: ${process.version}
-DiscordJS :: ${Discord.version}
-Arch :: ${process.arch}
-Platform :: ${process.platform}
-= Host Information =
-UsedHeap :: ${Math.round(process.memoryUsage().heapUsed / 1024 / 1024 * 100) / 100} MB
-Heap :: ${Math.round(process.memoryUsage().heapTotal / 1024 / 1024 * 100) / 100} MB
-Ram :: ${ramUsage} MB
-Rss :: ${Math.round(process.memoryUsage().rss / 1024 / 1024 * 100) / 100} MB
-\`\`\);
-  }
+Server Support : https://discord.gg/p4xQ6jv
+
+bot link : https://discordapp.com/api/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot
+`);
+
+message.channel.send('**تم الارسال في الخاص**');
+
+    }
 });
+  
 
 
 
