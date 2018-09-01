@@ -506,7 +506,7 @@ bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=483499229
 ┃╭━╮┃┃┃┃┃┃┃━┫╭━╮┃╭╮┃┃
 ┃╰━╯┃╰┫╰╯┃┃━┫╰━╯┃╰╯┃╰╮
 ╰━━━┻━┻━━┻━━┻━━━┻━━┻━╯
- __created By__: iiBlueGamer295YT| SK ?#0548
+ __created By__: iiBlueGamer295YT| SK #0548
 
 Server Support : https://discord.gg/p4xQ6jv
 
