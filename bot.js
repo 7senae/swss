@@ -738,7 +738,7 @@ client.on('message', message =>{
     
         let reportEmbed = new Discord.RichEmbed()
         .setTitle("User just reported...")
-        .setColor("#f7abab")
+        .setColor("RANDOM")
         .addField("- Reported User :", `${rUser} (${rUser.id})`)
         .addField("- Reported By :", `${message.author} (${message.author.id})`)
         .addField("- Reported In :", message.channel)
