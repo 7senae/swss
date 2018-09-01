@@ -446,11 +446,11 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
  ❖ -bc <message> ➾ message all members in server
 
-❖ -mute <user> <time> <reason>
+❖ -mute <user> <time> <reason> ➾ mute from server
 
-❖ -unmute <user>
+❖ -unmute <user> ➾ unmute from server
 
-❖ -clear <number>
+❖ -clear <number> ➾ clear chat
 
 ❖ -ban <mention> <reason> ➾ ban member from server
 
@@ -607,7 +607,7 @@ let embed = new Discord.RichEmbed()
     .addField('🎽 | الاسم :  ',`${member}`)
     .addField('📢 | لقد غادر:' , `لقد خرج منا عضو هو , ${member}:cry: `)
     .addField('🆔 | الايدي :', "**[" + `${member.id}` + "]**" )
-            .addField('➡| تبقا',`${member.guild.memberCount}`)
+            .addField('➡| تبقى',`${member.guild.memberCount}`)
            
               .addField("الاسم:",`<@` + `${member.id}` + `>`, true)
                 
