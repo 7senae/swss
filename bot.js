@@ -324,7 +324,7 @@ client.on("message", message => {
 صاحب السيرفر :key: \` ${message.guild.owner.user.username} \`                                        
 عدد اعضاء السيرفر :bar_chart: \` ${message.guild.memberCount}\`
                                   رومات السيرفر 
-\`#\`${message.guild.channels.filter(m => m.type === 'text').size} \`ًں”ˆ\`${message.guild.channels.filter(m => m.type === 'voice').size}
+\`#\`${message.guild.channels.filter(m => m.type === 'text').size} \🔈\`${message.guild.channels.filter(m => m.type === 'voice').size}
  رتب السيرفر :scroll: 
 ${message.guild.roles.size}
 **  `)
