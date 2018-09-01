@@ -269,19 +269,17 @@ client.on("message", msg => {
 });
 
 
-
    client.on('message', message => {
        if(message.content.startsWith(`${prefix}invite`)){
            if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
            var embed = new Discord.RichEmbed()
            .setTitle("Invite BlueBot")
-           .setURL("https://discordapp.com/oauth2/authorize?client_id=" + `${client.user.id}` + "&permissions=8&scope=bot" + `${client.user.id}` + "&permissions=8&scope=bot")
+           .setURL("https://discordapp.com/oauth2/authorize?client_id=" + `${client.user.id}` + "&permissions=8&scope=bot")
            .setTimestamp()
            .setColor("RANDOM")
            message.channel.send({embed})
        }
    });
-
 
 
 
