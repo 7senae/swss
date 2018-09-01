@@ -524,8 +524,8 @@ message.channel.send('**تم الارسال في الخاص**');
 
 
   
-If(message.content == prefix+"-"){
-//if(!message.member.hasPermission("ADMINISTRATOR"))
+if(message.content == prefix+"ban"){
+if(!message.member.hasPermission("ADMINISTRATOR"))
 
         return message.reply("Sorry, you don't have permissions to use this!");
 
@@ -552,8 +552,9 @@ If(message.content == prefix+"-"){
         .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
 
       message.chanel.send(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
-}
 
+
+}
 
 
 
