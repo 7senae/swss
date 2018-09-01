@@ -524,18 +524,26 @@ message.channel.send('**تم الارسال في الخاص**');
 
 
   
-client.on("message", async message => {
+client.on('message', message => {
+    if(message.author.bot) return;
+    if(message.content.type === 'dm') return;
+    
     var command = message.content.toLowerCase().split(" ")[0];
-    var member = message.mentions.members.first();
-    var reason = message.content.split(" ").slice(2).join(' ');
+    var args = message.content.split(" ");
+    var reason = args.slice(2).join(" ");
+    var userM = message.mentions.users.first() || message.guild.members.get(args[1]);
     
     if(command == prefix + 'ban') {
-        if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply("Sorry, you don't have permissions to use this!");
-        if(!member)return message.reply("Please mention a valid member of this server");
-        if(!member.bannable) return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
-        if(!reason) reason = "No reason provided";
-        await member.ban(reason).catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-        message.chanel.send(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+        if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تملك الصلاحيات المطلوبه**");
+        if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+        
+        if(!userM) return message.reply("**منشن شخص**");
+        if(!message.guild.member(userM).bannable) return message.reply("**يجب ان تكون رتبة البوت اعلي من رتبه الشخص المراد تبنيدة**");
+        
+        if(!reason) reason = 'No reason.';
+        
+        message.guild.member(userM).ban(7, userM);
+        message.channel.send(`**:white_check_mark: <@${userM.id}> banned from the server ! Reason: \`\`${reason}\`\` :airplane:**`);
     }
 });
 
@@ -546,5 +554,26 @@ client.on("message", async message => {
 
 
 
-client.login(process.env.BOT_TOKEN);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+client.login(process.env.BOT_TOKEN);
