@@ -791,6 +791,8 @@ client.on('message', message => {
 }
 });
 
+
+
 const moment = require('moment');
 client.on('message', message => {
     var command = message.content.toLowerCase().split(" ")[0];
@@ -800,8 +802,8 @@ client.on('message', message => {
         var memberOnline = message.guild.members.filter(m=>m.presence.status == 'online').size + message.guild.members.filter(m=>m.presence.status == 'idle').size + message.guild.members.filter(m=>m.presence.status == 'dnd').size;
        
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':no_entry: | You dont have **ADMINISTRATOR** Permission!');
-        if(!message.guild.member(Alpha.user).hasPermission('EMBED_LINKS')) return message.channel.send(':no_entry: | I dont have **EMBED_LINKS** Permission!');
-        if(!message.guild.member(Alpha.user).hasPermission('VIEW_AUDIT_LOG')) return message.channel.send(':no_entry: | I dont have **VIEW_AUDIT_LOG** Permission!');
+        if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return message.channel.send(':no_entry: | I dont have **EMBED_LINKS** Permission!');
+        if(!message.member.hasPermission("EMBED_LINKS")) return message.channel.send(":no_entry_sign: You don't have the permission **EMBED LINKS**");
         message.guild.fetchBans().then(bans => {
             var bansSize = bans.size;
            
@@ -849,6 +851,24 @@ client.on('message', message => {
         })
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
