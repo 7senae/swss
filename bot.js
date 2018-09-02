@@ -306,35 +306,6 @@ message.channel.send(`**#-  ${args}**`);
 
 
 
-client.on("message", message => {
-    
-    if(message.content.startsWith(prefix + "server")) {
-        if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("**ط§ظ„ط£ظ…ط± ظ„ظ„ط§ط¯ط§ط±ظ‡ ظپظ‚ط· **");
-        const starEmbed = new Discord.RichEmbed()
-        .setAuthor(message.guild.name, message.guild.iconURL)
-        .setThumbnail(message.guild.iconURL)
-        .setColor("RANDOM")
-.setDescription(`**
-صاحب السيرفر :key: \` ${message.guild.owner.user.username} \`                                        
-عدد اعضاء السيرفر :bar_chart: \` ${message.guild.memberCount}\`
-                                  رومات السيرفر 
-\`#\`${message.guild.channels.filter(m => m.type === 'text').size} \🔈\`${message.guild.channels.filter(m => m.type === 'voice').size}
- رتب السيرفر :scroll: 
-${message.guild.roles.size}
-**  `)
-        message.channel.send(starEmbed)
-    }
-});
-   
-
-
-
-
-
-
-
-
-
 client.on('message', message => {   
 if (message.author.boss) return;
 var prefix = "-";
@@ -820,7 +791,64 @@ client.on('message', message => {
 }
 });
 
-
+const moment = require('moment');
+client.on('message', message => {
+    var command = message.content.toLowerCase().split(" ")[0];
+    if(command == prefix + 'server') {
+        var botCount = message.guild.members.filter(m => m.user.bot).size;
+        var memberCount = message.guild.memberCount - botCount;
+        var memberOnline = message.guild.members.filter(m=>m.presence.status == 'online').size + message.guild.members.filter(m=>m.presence.status == 'idle').size + message.guild.members.filter(m=>m.presence.status == 'dnd').size;
+       
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':no_entry: | You dont have **ADMINISTRATOR** Permission!');
+        if(!message.guild.member(Alpha.user).hasPermission('EMBED_LINKS')) return message.channel.send(':no_entry: | I dont have **EMBED_LINKS** Permission!');
+        if(!message.guild.member(Alpha.user).hasPermission('VIEW_AUDIT_LOG')) return message.channel.send(':no_entry: | I dont have **VIEW_AUDIT_LOG** Permission!');
+        message.guild.fetchBans().then(bans => {
+            var bansSize = bans.size;
+           
+            if(message.guild.verificationLevel === 0) {
+                var vLvl = 'Very Easy';
+            }else
+            if(message.guild.verificationLevel === 1) {
+                var vLvl = 'Easy';
+            }else
+            if(message.guild.verificationLevel === 2) {
+                var vLvl = 'Medium';
+            }else
+            if(message.guild.verificationLevel === 3) {
+                var vLvl = 'Hard';
+            }else
+            if(message.guild.verificationLevel === 4) {
+                var vLvl = 'Very Hard';
+            }
+           
+            var serverInfo = new Discord.RichEmbed()
+            .setTitle(`:books: Information about **${message.guild.name}** Server.`)
+            .setColor('AQUA')
+            .setThumbnail(message.guild.iconURL)
+            .addField(':crown: **Server Owner**', `**➥** [ ${message.guild.owner} ]`, true)
+            .addField(':satellite: **Server Type**', `**➥** [ **${message.guild.region}** ]`, true)
+            .addField(':date: **Server Created At**', `**➥** [ **${moment(message.guild.createdAt).format("LL")}** ]`, true)
+            .addField(':shield: **Verification Level**', `**➥** [ **${vLvl}** ]`, true)
+            .addField(':first_place: **Roles Amount**', `**➥** [ **${message.guild.roles.size}** ]`, true)
+            .addField(':name_badge: **Bans Amount**', `**➥** [ **${bansSize}** ]`, true)
+            .addField(':bar_chart: **Channels Amount**', `**➥** [ **${message.guild.channels.size}** ]`, true)
+            .addField(':diamond_shape_with_a_dot_inside: **Categores Amount**', `**➥** [ **${message.guild.channels.filter(m=>m.type == 'category').size}** ]`, true)
+            .addField(':pencil: **Text Amount**', `**➥** [ **${message.guild.channels.filter(m=>m.type == 'text').size}** ]`, true)
+            .addField(':microphone2: **Voice Amount**', `**➥** [ **${message.guild.channels.filter(m=>m.type == 'voice').size}** ]`, true)
+            .addField(':zzz: **AFK Channel**', `**➥** [ **${message.guild.afkChannel || 'لا يوجد'}** ]`, true)
+            .addField(':robot: **Bots Count**', `**➥** [ **${botCount}** ]`, true)
+            .addField(':busts_in_silhouette: **Members Count**', `**➥** [ **${memberCount}** ]`, true)
+            .addField(':green_heart: **Online Members**', `**➥** [ **${memberOnline}** ]`, true)
+            .addField(':black_circle: **Offline Members**', `**➥** [ **${message.guild.members.filter(m=>m.presence.status == 'offline').size}** ]`, true)
+            .addField(':bust_in_silhouette: **Last Member**', `**➥** [ ${Array.from(message.channel.guild.members.values()).sort((a, b) => b.joinedAt - a.joinedAt).map(m => `<@!${m.id}>`).splice(0, 1)} ]`, true)
+            .addField(':id: **Server ID**', `**➥** [ **${message.guild.id}** ]`, true)
+            .setTimestamp()
+            .setFooter(message.author.tag, message.author.avatarURL)
+           
+            message.channel.send(serverInfo);
+        })
+    }
+});
 
 
 
