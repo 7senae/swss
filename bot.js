@@ -103,12 +103,7 @@ client.on('message', message => {
             .setAuthor(client.user.username,client.user.avatarURL)
             .setThumbnail(client.user.avatarURL)
             .setColor('RANDOM')
-            .setTitle('``INFO BlueBot`` ')
-            .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
-            .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
-            .addField('``servers``', [client.guilds.size], true) 
-            .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
-            .addField('``My ID``' , `[ ${client.user.id} ]` , true)
+            .setTitle('``INFO User`` ')
             .addField("``Your Name``", `${message.author.username}`)
             .addField('``your tag``', message.author.discriminator)
             .addField('``Your id``', message.author.id)
@@ -469,6 +464,8 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -info ➾ user & bot informations 
 
+❖ -bot ➾ bot informations 
+
 ❖ -server ➾ server informations
 
 ❖ make room with name <welcome> ➾ for join-leave log
@@ -798,7 +795,38 @@ const prefix = "-";
 
 
 
-
+client.on('message',async message => {
+    var p = "-"
+  function timeCon(time) {
+  let days = Math.floor(time % 31536000 / 86400)
+  let hours = Math.floor(time % 31536000 % 86400 / 3600)
+  let minutes = Math.floor(time % 31536000 % 86400 % 3600 / 60)
+  let seconds = Math.round(time % 31536000 % 86400 % 3600 % 60)
+  days = days > 9 ? days : '0' + days
+  hours = hours > 9 ? hours : '0' + hours
+  minutes = minutes > 9 ? minutes : '0' + minutes
+  seconds = seconds > 9 ? seconds : '0' + seconds
+  return `${days > 0 ? `${days}:` : ''}${(hours || days) > 0 ? `${hours}:` : ''}${minutes}:${seconds}`
+  };
+  if(message.content.startsWith( p + "bot")) {
+    const millis = new Date().getTime() - client.user.createdAt.getTime();
+    const noww = new Date();
+    dateFormat(noww, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
+    const createdAT = millis / 1000 / 60 / 60 / 24;
+    var star = new Discord.RichEmbed() 
+    .setAuthor(client.user.username, client.user.avatarURL)
+    .setTitle(`${client.user.username} معلومات عن بوت`)
+    .setColor('#36393e')
+    .addField('🌟 امر البوت', prefix, true)
+    .addField('🌟 الرامات المستخدمة', `${(process.memoryUsage().rss / 1048576).toFixed()} ميجا بايت`,true)
+    .addField('🌟 سرعة البوت', `${Math.round(client.ping)} ملي سكند`,true)
+    .addField('🌟 تم تشغيل البوت منذ', `${timeCon(process.uptime())}`, true)
+    .addField('🌟 السيرفرات', client.guilds.size,true)
+    .addField('🌟 المستخدمين', client.users.size,true)
+    .setFooter(`${client.user.username} :: ${new Date().toLocaleString()}`);
+    message.channel.send(star);
+  }
+});
 
 
 
