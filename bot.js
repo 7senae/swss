@@ -635,14 +635,14 @@ client.on('message', message => {
         var totalMemberOnline = memberOnline + memberIdle + memberDnd;
         
         let alatMember = new Discord.RichEmbed()
-        .setTitle(':white_check_mark: **حالات الاعضاء**')
+        .setTitle(':white_check_mark: **Members Status**')
         .setColor('RANDOM')
-        .addField(`:green_heart: أونلاين: ${memberOnline}`, '-', true)
-        .addField(`:yellow_heart: خامل: ${memberIdle}`, '-', true)
-        .addField(`:heart: مشغول: ${memberDnd}`, '-', true)
-        .addField(`:black_heart: اوفلاين: ${memberOffline}`, '-', true)
-        .addField(`:heavy_plus_sign: مجموع الاونلاين: ${totalMemberOnline}`, '-', true)
-        .addField(`:blue_heart: الكل: ${memberCount}`, '-', true)
+        .addField(`:green_heart: Online: ${memberOnline}`, '-', true)
+        .addField(`:yellow_heart: Idle: ${memberIdle}`, '-', true)
+        .addField(`:heart: Do not Disturb : ${memberDnd}`, '-', true)
+        .addField(`:black_heart: Offline: ${memberOffline}`, '-', true)
+        .addField(`:heavy_plus_sign: Member Online: ${totalMemberOnline}`, '-', true)
+        .addField(`:blue_heart: All: ${memberCount}`, '-', true)
         .setImage(message.guild.iconURL)
         
         message.channel.send(alatMember);
