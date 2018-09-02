@@ -103,7 +103,12 @@ client.on('message', message => {
             .setAuthor(client.user.username,client.user.avatarURL)
             .setThumbnail(client.user.avatarURL)
             .setColor('RANDOM')
-            .setTitle('``INFO User`` ')
+            .setTitle('``INFO BlueBot`` ')
+            .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
+            .addField('``servers``', [client.guilds.size], true) 
+            .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
+            .addField('``My ID``' , `[ ${client.user.id} ]` , true)
             .addField("``Your Name``", `${message.author.username}`)
             .addField('``your tag``', message.author.discriminator)
             .addField('``Your id``', message.author.id)
@@ -112,7 +117,6 @@ client.on('message', message => {
     })
 }
 });
-
 
 
 
@@ -463,8 +467,6 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 ❖ -ping ➾ to see ping
 
 ❖ -info ➾ user & bot informations 
-
-❖ -bot ➾ bot informations 
 
 ❖ -server ➾ server informations
 
