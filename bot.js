@@ -103,21 +103,18 @@ client.on('message', message => {
             .setAuthor(client.user.username,client.user.avatarURL)
             .setThumbnail(client.user.avatarURL)
             .setColor('RANDOM')
-            .setTitle('``INFO BlueBot`` ')
-            .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
-            .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
-            .addField('``servers``', [client.guilds.size], true) 
-            .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
-            .addField('``My ID``' , `[ ${client.user.id} ]` , true)
+            .setTitle('``INFO User`` ')
             .addField("``Your Name``", `${message.author.username}`)
             .addField('``your tag``', message.author.discriminator)
             .addField('``Your id``', message.author.id)
+            .addField('» joined to discord', `${created.toFixed(0)} `,true
+            .addField('» joined to server ', `${joined.toFixed(0)} `,true
+            .addField('» invites ',inviteCount,true)
             .addField('``Bot``', message.author.bot)
             .addField('``date of registration``', message.author.createdAt)
     })
 }
 });
-
 
 
 
