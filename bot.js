@@ -441,7 +441,7 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -bot ➾ bot informations
 
-❖ -server informations
+❖ -server ➾  informations
 
 ❖ make room with name <welcome> ➾ for join-leave log
 
@@ -856,12 +856,57 @@ client.on('message', message => {
 
 
 
+client.on('message',function(message) {
+    
+    if(message.content.startsWith(`<@${client.user.id}>`)) {
+        message.channel.send('Hey Im BlueBot')
+        message.channel.send('if you need by a support write -support ')
+        message.channel.send('if you need help do -help ')
+    }
+});
 
 
 
 
+client.on('message', message => {
+ const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
+if (message.author.bot) return;
+    if (command === 'closec') {
+                        if(!message.channel.guild) return;
+  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this command for admins only').then(message => message.delete(5000))
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+ const starEmbed = new Discord.RichEmbed()
+               .setAuthor('the chat was colsed : '+message.author.username)
+                .setColor('RANDOM')
+               
+               message.channel.send(starEmbed)
+               });
+             }
+if (command === "openc") {
+    
+    if(!message.channel.guild) return;
+  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this cimmand for admins only ').then(message => message.delete(5000))
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               const starEmbed = new Discord.RichEmbed()
+               .setAuthor('the chat was opened: '+message.author.username)
+                        .setColor('RANDOM')
+               
+               message.channel.send(starEmbed)
+           });
+             }
 
 
+
+});
 
 
 
