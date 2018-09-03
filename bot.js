@@ -419,6 +419,10 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -kick <user> <reason> ➾ kick from server
 
+❖ -openc ➾ to open chat
+
+❖ -colsec ➾ to close chat
+
 ❖ -clear <number> ➾ clear chat
 
 ❖ -ban <mention> <reason> ➾ ban member from server
