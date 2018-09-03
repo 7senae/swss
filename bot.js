@@ -872,13 +872,15 @@ client.on('message',function(message) {
 
 
 
+
+
 client.on('message', message => {
  const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
 if (message.author.bot) return;
     if (command === 'closec') {
                         if(!message.channel.guild) return;
-  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this command for admins only').then(message => message.delete(5000))
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: false
@@ -894,7 +896,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 if (command === "openc") {
     
     if(!message.channel.guild) return;
-  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this cimmand for admins only ').then(message => message.delete(5000))
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: true
@@ -911,7 +913,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 
 
 });
-
 
 
 
