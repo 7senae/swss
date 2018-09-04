@@ -805,9 +805,6 @@ client.on('message', message => {
         var memberCount = message.guild.memberCount - botCount;
         var memberOnline = message.guild.members.filter(m=>m.presence.status == 'online').size + message.guild.members.filter(m=>m.presence.status == 'idle').size + message.guild.members.filter(m=>m.presence.status == 'dnd').size;
        
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':no_entry: | You dont have **ADMINISTRATOR** Permission!');
-        if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return message.channel.send(':no_entry: | I dont have **EMBED_LINKS** Permission!');
-        if(!message.member.hasPermission("EMBED_LINKS")) return message.channel.send(":no_entry_sign: You don't have the permission **EMBED LINKS**");
         message.guild.fetchBans().then(bans => {
             var bansSize = bans.size;
            
@@ -855,7 +852,6 @@ client.on('message', message => {
         })
     }
 });
-
 
 
 
