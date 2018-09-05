@@ -11,6 +11,7 @@
     "canvas": "^1.6.10",
     "dateformat": "^3.0.3",
     "discord.js": "^11.3.2",
+    "gif-search": "^2.0.1",
     "express": "^4.16.3",
     "ffmpeg": "0.0.4",
     "ffmpeg-binaries": "^3.2.2-3",
@@ -33,4 +34,3 @@
     "node": "8.4.0"
   }
 }
-"gif-search": "^2.0.1",
