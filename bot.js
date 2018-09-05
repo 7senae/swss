@@ -950,7 +950,9 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 
 
 });
-const Util = require('discord.js');
+
+
+onst Util = require('discord.js');
 
 const getYoutubeID = require('get-youtube-id');
 
@@ -1262,21 +1264,20 @@ function play(guild, song) {
 client.on('message', message => {
     if (message.content === 'help') {
         let helpEmbed = new Discord.RichEmbed()
+		.setColor("RANDOM")
         .setTitle('**أوامر الميوزك...**')
-        .setDescription('**برفكس البوت (!)**')
-        .addField('play', 'لتشغيل اغنية')
-        .addField('join', 'دخول رومك الصوتي')
-        .addField('disconnect', 'الخروج من رومك الصوتي')
-        .addField('skip', 'تخطي الأغنية')
-        .addField('pause', 'ايقاف الاغنية مؤقتا')
-        .addField('resume', 'تكملة الاغنية')
-        .addField('queue', 'اظهار قائمة التشغيل')
-        .addField('np', 'اظهار الاغنية اللي انت مشغلها حاليا')
-        .setFooter('(general_commands) لاظهار الاوامر العامة')
+        .setDescription('**برفكس البوت (-)**')
+        .addField('play', '`لتشغيل اغنية`')
+        .addField('vol', '`لتغير مستوى الصوت من 1 الى 100 `')
+        .addField('skip', '`تخطي الأغنية`')
+        .addField('pause', '`ايقاف الاغنية مؤقتا`')
+        .addField('resume', '`تكملة الاغنية`')
+        .addField('queue', '`اظهار قائمة التشغيل`')
+        .addField('np', '`اظهار الاغنية اللي انت مشغلها حاليا`')
+        .setFooter('By : iiBlueGamer295YT| SK ♕#0548')
       message.channel.send(helpEmbed);
     }
 });
-
 
 
 
