@@ -1127,6 +1127,7 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 
 let profile = JSON.parse(fs.readFileSync("./profile.json", "utf8"))
 client.on("message", message => {
+var fs = require("fs");
   if (message.author.bot) return;
  if(!message.channel.guild)return;
   if (!profile[message.author.id]) profile[message.author.id] = {
