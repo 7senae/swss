@@ -952,6 +952,12 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 });
 
 
+
+
+const Discord = require('discord.js');
+
+const Util = require('discord.js');
+
 const getYoutubeID = require('get-youtube-id');
 
 const fetchVideoInfo = require('youtube-info');
@@ -968,6 +974,9 @@ const fs = require('fs');
 
 const gif = require("gif-search");
 
+const client = new Discord.Client({disableEveryone: true});
+
+const prefix = "!";
 /////////////////////////
 ////////////////////////
 
@@ -1262,20 +1271,30 @@ function play(guild, song) {
 client.on('message', message => {
     if (message.content === 'help') {
         let helpEmbed = new Discord.RichEmbed()
-		.setColor("RANDOM")
         .setTitle('**أوامر الميوزك...**')
         .setDescription('**برفكس البوت (-)**')
-        .addField('play', '`لتشغيل اغنية`')
-        .addField('vol', '`لتغير مستوى الصوت من 1 الى 100 `')
-        .addField('skip', '`تخطي الأغنية`')
-        .addField('pause', '`ايقاف الاغنية مؤقتا`')
-        .addField('resume', '`تكملة الاغنية`')
-        .addField('queue', '`اظهار قائمة التشغيل`')
-        .addField('np', '`اظهار الاغنية اللي انت مشغلها حاليا`')
+        .addField('play', 'لتشغيل اغنية')
+        .addField('skip', 'تخطي الأغنية')
+        .addField('pause', 'ايقاف الاغنية مؤقتا')
+        .addField('resume', 'تكملة الاغنية')
+        .addField('queue', 'اظهار قائمة التشغيل')
+        .addField('np', 'اظهار الاغنية اللي انت مشغلها حاليا')
         .setFooter('By : iiBlueGamer295YT| SK ♕#0548')
+        .setColor('RANDOM')
       message.channel.send(helpEmbed);
     }
-});
+
+
+
+
+
+
+
+
+
+
+
+
 
 let profile = JSON.parse(fs.readFileSync("./profile.json", "utf8"))
 client.on("message", message => {
@@ -1318,7 +1337,7 @@ if(message.content.startsWith(prefix + "daily")) {
   if(profile[message.author.id].lastDaily != moment().format('day')) {
    profile[message.author.id].lastDaily = moment().format('day')
    profile[message.author.id].credits += 310
-    message.channel.send(`**${message.author.username} you collect your \`310\` :dollar: daily pounds**`)
+    message.channel.send(`**${message.author.username} you collect your \`310\` :yen: daily credits!**`)
 } else {
     message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
 }
