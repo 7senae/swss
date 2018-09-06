@@ -1010,7 +1010,8 @@ if(message.content.startsWith(prefix + "daily")) {
 let cont = message.content.slice(prefix.length).split(" ");
 let args = cont.slice(2);
 let sender = message.author
-if(message.content.startsWith(prefix + 'trans')) 
+if(message.content.startsWith(prefix + 'trans'))
+if (!args[0]) {message.channel.send(`**Usage: ${prefix}trans @someone amount**`); 
          return;
            }
         // We should also make sure that args[0] is a number
