@@ -1002,7 +1002,7 @@ if(message.content.startsWith(prefix + "daily")) {
 let cont = message.content.slice(prefix.length).split(" ");
 let args = cont.slice(2);
 let sender = message.author
-if(message.content.startsWith(prefix + 'trans'))
+if(message.content.startsWith(prefix + 'trans')) {
 if (!args[0]) {message.channel.send(`**Usage: ${prefix}trans @someone amount**`); 
          return;
            }
@@ -1047,6 +1047,7 @@ mentionned.send(`:credit_card: | Transfer Receipt \`\`\`\`You have received ${ar
                message.channel.sendEmbed(embed)
         })
         })
+}
 });
 
 client.login(process.env.BOT_TOKEN);
