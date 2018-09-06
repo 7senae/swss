@@ -954,9 +954,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 
 
 
-const Discord = require('discord.js');
-
-const Util = require('discord.js');
 
 const getYoutubeID = require('get-youtube-id');
 
@@ -976,7 +973,7 @@ const gif = require("gif-search");
 
 const client = new Discord.Client({disableEveryone: true});
 
-const prefix = "!";
+const prefix = "-";
 /////////////////////////
 ////////////////////////
 
