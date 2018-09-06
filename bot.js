@@ -952,9 +952,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 });
 
 
-
-
-
 const getYoutubeID = require('get-youtube-id');
 
 const fetchVideoInfo = require('youtube-info');
