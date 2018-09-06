@@ -318,7 +318,7 @@ if (!message.channel.guild) return;
 if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
 if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
 let user = message.mentions.users.first();
-let muteRole = message.guild.roles.find("name", "Muted");
+let muteRole = message.guild.roles.find(r => r.name === "Muted");
 if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
 if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
 let reason = message.content.split(" ").slice(2).join(" ");
@@ -357,8 +357,8 @@ client.on("message", message => {
   if (command === "-unmute") { // حط البرفكس حقت بوتك قبل الامر
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
   let user = message.mentions.users.first();
-  let modlog = client.channels.find('name', 'mute-log');
-  let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+  let modlog = client.channels.find(c => c.name === 'mute-log');
+  let muteRole = client.guilds.get(message.guild.id).roles.find(r => r.name === 'Muted');
   if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").catch(console.error);
   if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').catch(console.error);
   const embed = new Discord.RichEmbed()
@@ -575,7 +575,7 @@ if (message.content.startsWith("-sug")) {
 
 
 client.on('guildMemberRemove', member => {
-let channel = member.guild.channels.find('name', 'welcome');
+let channel = member.guild.channels.find(c => c.name === 'welcome');
 let memberavatar = member.user.avatarURL
   if (!channel) return; 
 let embed = new Discord.RichEmbed()
@@ -657,7 +657,7 @@ client.on('message', message => {
 
 
 client.on('guildMemberAdd', member => {
-let channel = member.guild.channels.find('name', 'welcome');
+let channel = member.guild.channels.find(c => c.name === 'welcome');
 let memberavatar = member.user.avatarURL
   if (!channel) return; 
 let embed = new Discord.RichEmbed()
@@ -721,7 +721,7 @@ client.on('message', message =>{
         .addField("- Report Time :", message.createdAt.toLocaleString(),true)
         .addField("- Reason :", reason);
     
-        let reportschannel = message.guild.channels.find(`name`, "reports");
+        let reportschannel = message.guild.channels.find(c => c.name === "reports");
         if(!reportschannel) return message.channel.send("You should to make `reports` channel.");
     
     
@@ -1055,13 +1055,4 @@ mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${arg
 
 });
 
-
-
-
-
-
-
-
-
-
-client.login(process.env.BOT_TOKEN)
+client.login(process.env.BOT_TOKEN);
