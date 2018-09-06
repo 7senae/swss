@@ -435,6 +435,12 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -id ➾ your id
 
+❖ -daily ➾ to get free credit
+
+❖ -credit ➾ to see your credit
+
+❖ -trans <@someone> <number> ➾ to get someone credit
+
 ❖ -report ➾ to report someone in server
 
 ❖ -avatar ➾ your avatar account
