@@ -298,8 +298,6 @@ client.on('message', message => {
 }); 
 
 
-
-
 client.on('message',function(message) {
 	if(message.author.bot) return;
 	if(message.channel.type === 'dm') return;
