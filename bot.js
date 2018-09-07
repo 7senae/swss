@@ -1068,7 +1068,7 @@ mentionned.send(`:credit_card: | Transfer Receipt \`\`\`\`You have received ${ar
 client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('-bcall')){
+if (message.content.startsWith('!bcall')){
  if (message.author.id !== '349095859859881984') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
  if(!message.author.id === '349095859859881984') return;
 message.channel.sendMessage('جار ارسال الرسالة |✅')
