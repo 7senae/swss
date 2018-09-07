@@ -310,15 +310,59 @@ message.channel.send(`**#-  ${args}**`);
 
 
 
+
+
+
+Save New Duplicate & Edit Just Text Twitter
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
 client.on('message', async message => {
     let muteReason = message.content.split(" ").slice(3).join(" ");
     let mutePerson = message.mentions.users.first();
     let messageArray = message.content.split(" ");
     let muteRole = message.guild.roles.find(r => r.name === 'Muted');
     let time = messageArray[2];
-    if(message.content.startsWith(prefix + "tempmute")) {
+    if(message.content.startsWith(prefix + "mute")) {
+if (message.author.bot) return;
         if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.channel.send('**- You don\'t have the needed permissions!**');
-        if (message.author.bot) return;
         if(!mutePerson) return message.channel.send("**- Mention someone!**");
         if(mutePerson === message.author) return message.channel.send('**- You cannot mute yourself!**');
         if(mutePerson === client.user) return message.channel.send('**- You cannot mute me!**');
@@ -350,8 +394,6 @@ client.on('message', async message => {
     });
     }
 })
-
-
 
 
 client.on("message", message => {
