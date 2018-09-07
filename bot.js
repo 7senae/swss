@@ -309,46 +309,45 @@ message.channel.send(`**#-  ${args}**`);
 });
 
 
-client.on('message', async message => {
-    let muteReason = message.content.split(" ").slice(3).join(" ");
-    let mutePerson = message.mentions.users.first();
-    let messageArray = message.content.split(" ");
-    let muteRole = message.guild.roles.find(r => r.name === 'Muted');
-    let time = messageArray[2];
-    if(message.content.startsWith(prefix + "mute")) {
-if (message.author.bot) return;
-        if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.channel.send('**- You don\'t have the needed permissions!**');
-        if(!mutePerson) return message.channel.send("**- Mention someone!**");
-        if(mutePerson === message.author) return message.channel.send('**- You cannot mute yourself!**');
-        if(mutePerson === client.user) return message.channel.send('**- You cannot mute me!**');
-        if(message.guild.member(mutePerson).roles.has(muteRole.id)) return message.channel.send('**- This person is already muted!**');
-        if(!muteRole) return message.guild.createRole({ name: "Muted", permissions: [] });
-        if(!time) return message.channel.send("**- Supply a time!**");
-        if(!time.match(/[1-7][s,m,h,d,w]/g)) return message.channel.send('**- Supply a real time!**');
-        if(!muteReason) return message.channel.send("**- Supply a reason!**");
-        message.guild.channels.forEach(async (channel, id) => {
-      message.channel.overwritePermissions(muteRole, {
-        SEND_MESSAGES: false,
-        ADD_REACTIONS: false
-      });
-    });
-        message.guild.member(mutePerson).addRole(muteRole);
-        let muteEmbed = new Discord.RichEmbed()
-        .setAuthor(`${mutePerson.username}#${mutePerson.discriminator}`,mutePerson.avatarURL)
-        .setTitle(`You have been muted in ${message.guild.name}`)
-        .setThumbnail(message.guild.iconURL)
-        .addField('- Muted By:',message.author,true)
-        .addField('- Reason:',muteReason,true)
-        .addField('- Duration:',`${mmss(mmss(time), {long: true})}`)
-        .setFooter(message.author.username,message.author.avatarURL);
-        message.guild.member(mutePerson).sendMessage(muteEmbed)
-        message.channel.send(`**- Done!, I muted: ${mutePerson}**`)
-        .then(() => { setTimeout(() => {
-           message.guild.member(mutePerson).removeRole(muteRole);
-       }, mmss(time));
-    });
-    }
-})
+client.on('message', message => {   
+if (message.author.boss) return;
+var prefix = "-";
+if (!message.content.startsWith(prefix)) return;
+let command = message.content.split(" ")[0];
+command = command.slice(prefix.length);
+let args = message.content.split(" ").slice(1);
+if (command == "mute") {
+if (!message.channel.guild) return;
+if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
+if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
+let user = message.mentions.users.first();
+let muteRole = message.guild.roles.find(r => r.name === "Muted");
+if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
+if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
+let reason = message.content.split(" ").slice(2).join(" ");
+message.guild.member(user).addRole(muteRole);
+const muteembed = new Discord.RichEmbed()
+.setColor("RANDOM")
+.setAuthor(`Muted!`, user.displayAvatarURL)
+.setThumbnail(user.displayAvatarURL)
+.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
+.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
+.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
+.addField("User", user, true)  
+message.channel.send({embed : muteembed});
+var muteembeddm = new Discord.RichEmbed()
+.setAuthor(`Muted!`, user.displayAvatarURL)
+.setDescription(`
+${user} انت معاقب بميوت كتابي بسبب مخالفة القوانين 
+ ${message.author.tag} تمت معاقبتك بواسطة
+[ ${reason} ] : السبب
+اذا كانت العقوبة عن طريق الخطأ تكلم مع المسؤلين 
+`)
+.setFooter(`في سيرفر : ${message.guild.name}`)
+.setColor("RANDOM")
+ user.send( muteembeddm);
+}  
+});  
 
 
 client.on("message", message => {
