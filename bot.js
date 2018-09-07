@@ -302,7 +302,7 @@ client.on('message', message => {
 
 client.on('message',function(message) {
 	if(message.author.bot) return;
-	if(message.channel.type === 'dm') return; ممم وش نسوي؟
+	if(message.channel.type === 'dm') return;
 let args = message.content.split(" ").slice(1).join(" ");
 if(message.content.startsWith(prefix + "say")) {
 if(!args) return;
