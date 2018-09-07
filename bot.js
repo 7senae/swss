@@ -542,12 +542,14 @@ client.on('message', message => {
     }
 });
 
+
+
+
+
   client.on('message', msg => {
-  if (message.author.bot) return;
+  if(msg.content === 'ping')
   msg.reply('pong')
 });
-  
-
 
 
 
