@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '-'
+const prefix = '-';
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -29,6 +29,7 @@ client.user.setGame(`-help | BlueBot 💙✨ `,"https://www.twitch.tv/S-F")
 });
 
 client.on('message', message => {
+	if(message.author.bot) return;
      if (message.content === "-ping") {
       const embed = new Discord.RichEmbed()
 
@@ -45,6 +46,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
+	if(message.author.bot) return;
 var perfix = "prefix";
       if (message.content.startsWith(prefix + 'clear')) {
         if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`**You Don't Have**  *MANAGE_MESSAGES*  **Permission **`).catch(console.error);
@@ -67,7 +69,8 @@ let args = message.content.split(" ").slice(1);
 
 
 
-client.on('message', message =>{
+client.on('message', message => {
+	if(message.author.bot) return;
     let args = message.content.split(' ');
     let prefix = "-"; 
     
@@ -97,6 +100,7 @@ client.on('message', message =>{
 
 
 client.on('message', message => {
+	if(message.author.bot) return;
     if (message.content.startsWith("-info")) {
     message.channel.send({
         embed: new Discord.RichEmbed()
@@ -119,10 +123,8 @@ client.on('message', message => {
 });
 
 
-
-
-const perfix = '-';
 client.on('message', msg => {
+	if(msg.author.bot) return;
  if (msg.content.startsWith(prefix + 'msg')) {
       let args = msg.content.split(' ').slice(1)
       if (!args[0]) return msg.reply(`**منشن الشخص اولا**`)
@@ -144,7 +146,6 @@ client.on('message', msg => {
 
 
 client.on('message' , message => {
-  var prefix = "-";
   if(message.author.bot) return;
   if(message.content.startsWith(prefix + "send")) {
     let args = message.content.split(" ").slice(1);
@@ -201,7 +202,8 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-              if(!message.channel.guild) return;
+	if(message.author.bot) return;
+              if(!message.channel.type === 'dm') return;
     if(message.content.startsWith(prefix + "bc")) {
     if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
   if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
@@ -248,7 +250,8 @@ client.on('message', message => {
 
 
 client.on("message", msg => {
-           var prefix = "-";//تكدر تغير البريفكس
+	if(msg.author.bot) return;
+	if(msg.channel.type === 'dm') return;
   if(msg.content.startsWith (prefix + "id")) {
     if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');
       const embed = new Discord.RichEmbed();
@@ -269,8 +272,9 @@ client.on("message", msg => {
 
 
 client.on('message', message => {
+	if(message.author.bot) return;
+	if(message.channel.type === 'dm') return;
         if (message.content === "-invite") {
-            if(!message.channel.guild) return;
         let embed = new Discord.RichEmbed()
         .setAuthor(` ${message.author.username} `, message.author.avatarURL)      
         .setTitle(`:small_orange_diamond: Click Here `)
@@ -281,6 +285,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
+	if(message.author.bot) return;
      if (message.content === "-support") {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
@@ -296,7 +301,8 @@ client.on('message', message => {
 
 
 client.on('message',function(message) {
-    let prefix = "-";
+	if(message.author.bot) return;
+	if(message.channel.type === 'dm') return; ممم وش نسوي؟
 let args = message.content.split(" ").slice(1).join(" ");
 if(message.content.startsWith(prefix + "say")) {
 if(!args) return;
@@ -541,6 +547,7 @@ client.on('message', message => {
 
 
   client.on('message', msg => {
+  if (message.author.bot) return;
   if(msg.content === 'ping')
   msg.reply('pong')
 });
@@ -550,7 +557,7 @@ client.on('message', message => {
 
 
 client.on('message' , message => {
-  
+if (message.author.bot) return;
 if (message.content.startsWith("-sug")) {
           if(!message.channel.guild) return message.reply('هذا الامر للسيرفرات فقط')
       if (message.author.bot) return;
@@ -707,6 +714,7 @@ Server Count: __${guild.memberCount}__**`)
 
 
 client.on('message', message =>{
+if (message.author.bot) return;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
@@ -742,6 +750,7 @@ client.on('message', message =>{
 
 
 client.on('message', message => {
+  if (message.author.bot) return;
 const prefix = "-";
   if (message.author.kick) return;
   if (!message.content.startsWith(prefix)) return;
@@ -780,6 +789,7 @@ const prefix = "-";
 
 
 client.on('message', message => {
+    if (message.author.bot) return;
     if (message.content.startsWith("-bot")) {
     message.channel.send({
         embed: new Discord.RichEmbed()
@@ -805,6 +815,7 @@ client.on('message', message => {
 
 const moment = require('moment');
 client.on('message', message => {
+    if (message.author.bot) return;
     var command = message.content.toLowerCase().split(" ")[0];
     if(command == prefix + 'server') {
         var botCount = message.guild.members.filter(m => m.user.bot).size;
@@ -918,6 +929,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 
 
 client.on('message', message => {
+if (message.author.bot) return;
  const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
 if (message.author.bot) return;
