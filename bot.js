@@ -539,13 +539,6 @@ client.on('message', message => {
 
 
 
-  client.on('message', msg => {
-  if(msg.content === 'ping')
-  msg.reply('pong')
-});
-
-
-
 client.on('message' , message => {
 if (message.author.bot) return;
 if (message.content.startsWith("-sug")) {
