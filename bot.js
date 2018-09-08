@@ -1058,22 +1058,6 @@ mentionned.send(`:credit_card: | Transfer Receipt \`\`\`\`You have received ${ar
 }
 });
 
-const devs = ['349095859859881984'];
-const adminprefix = '$';
-      
-client.on('message', message => {
-    if(!devs.includes(message.author.id)) return;
-    let args = message.content.split(' ').slice(1).join(' ');
-    if(message.content.startsWith(adminprefix + 'slfstr')) {
-        message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:');
-        client.users.forEach(m =>{
-            m.sendMessage(args)
-        })
-    }
-});
-
-
-
 
 
 
