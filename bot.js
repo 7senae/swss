@@ -512,9 +512,6 @@ bot link : https://discordapp.com/api/oauth2/authorize?client_id=483499229407477
 
 
 
-
-
-
 client.on('message', message => {
     if(message.author.bot) return;
     if(message.content.type === 'dm') return;
@@ -533,7 +530,7 @@ client.on('message', message => {
         
         if(!reason) reason = 'No reason.';
         
-        message.guild.member(userM.user).ban(7, userM);
+        message.guild.member(userM.user).ban(7, userM.user);
         message.channel.send(`**:white_check_mark: <@${userM.id}> banned from the server ! Reason: \`\`${reason}\`\` :airplane:**`);
     }
 });
