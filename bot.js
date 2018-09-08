@@ -510,8 +510,6 @@ bot link : https://discordapp.com/api/oauth2/authorize?client_id=483499229407477
 });
   
 
-
-
 client.on('message', message => {
     if(message.author.bot) return;
     if(message.content.type === 'dm') return;
@@ -519,11 +517,12 @@ client.on('message', message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.split(" ");
     var reason = args.slice(2).join(" ");
-    var userM = message.mentions.users.first() || message.guild.members.get(args[1]);
     
     if(command == prefix + 'ban') {
         if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**انت لا تملك الصلاحيات المطلوبه**");
         if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+
+        var userM = message.mentions.users.first() || message.guild.members.get(args[1]);
         
         if(!userM) return message.reply("**منشن شخص**");
         if(!message.guild.member(userM).bannable) return message.reply("**يجب ان تكون رتبة البوت اعلي من رتبه الشخص المراد تبنيدة**");
@@ -534,7 +533,6 @@ client.on('message', message => {
         message.channel.send(`**:white_check_mark: <@${userM.id}> banned from the server ! Reason: \`\`${reason}\`\` :airplane:**`);
     }
 });
-
 
 
 
