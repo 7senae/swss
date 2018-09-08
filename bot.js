@@ -390,8 +390,7 @@ client.on("message", message => {
 client.on('message', message => {
     if (message.author.bot) return;
      if (message.content === prefix + "help") {
-		 message.channel.send('**The Message Was Sent On Private**');
-            
+            msg.reply('**check your DMs! :mailbox_with_mail: **')
 	
 		 
 
@@ -489,6 +488,7 @@ bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=483499229
   client.on('message', message => {
     if (message.author.bot) return;
      if (message.content === prefix + "own") {
+            msg.reply('**check your DMs! :mailbox_with_mail: **')
 
 
  message.author.sendMessage(`
@@ -507,7 +507,7 @@ Server Support : https://discord.gg/p4xQ6jv
 bot link : https://discordapp.com/api/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot
 `);
 
-message.channel.send('**تم الارسال في الخاص**');
+message.channel.send('**:mailbox_closed: **');
 
     }
 });
