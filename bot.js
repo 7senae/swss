@@ -390,7 +390,7 @@ client.on("message", message => {
 client.on('message', message => {
     if (message.author.bot) return;
      if (message.content === prefix + "help") {
-            msg.reply('**check your DMs! :mailbox_with_mail: **')
+message.reply('**check your DMs! :mailbox_with_mail: **')
 	
 		 
 
@@ -485,11 +485,10 @@ bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=483499229
 });  
  
 
-  client.on('message', message => {
+client.on('message', message => {
     if (message.author.bot) return;
      if (message.content === prefix + "own") {
-            msg.reply('**check your DMs! :mailbox_with_mail: **')
-
+message.reply('**check your DMs! :mailbox_with_mail: **')
 
  message.author.sendMessage(`
  
