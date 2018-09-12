@@ -230,6 +230,7 @@ client.on('message', message => {
        .addField('الرساله', args)
        .setThumbnail(message.author.avatarURL)
        .setFooter(copy, client.user.avatarURL);
+       .addField('الرساله الى : ' , `${m}`)
     m.send({ embed: bc })
     msg.delete();
     })
