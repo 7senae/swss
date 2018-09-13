@@ -472,6 +472,10 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -giveaway <room name> <time in min> <giveaway name> ➾ make giveaway! 
 
+❖ -BotTime ➾ to see time bot is online for
+
+❖ -ticket ➾ to make ticket / or to close it 
+ 
 ==================================================================
 
 Server support: https://discord.gg/p4xQ6jv
@@ -1185,7 +1189,7 @@ client.on("message", (message) => {
 
 client.on("message", async message => {
 if(message.channel.type === "dm") return;
- if(message.content === (prefix + "B-Time")) { /// حط اي كلمة تبيها
+ if(message.content === (prefix + "BotTime")) { /// حط اي كلمة تبيها
  if (!message.channel.guild) return message.reply('**هذا الامر للسيرفرات فقط**');
     let uptime = client.uptime;
 
