@@ -1137,7 +1137,6 @@ client.user.createGuild('Example Guild', 'london').then(guild => {
     .then(role => client.users.get('<UserId>').send(role.id))
     .catch(error => console.log(error))
 });
-​
 /* ES8 async/await */
 async function createGuild(client, message) {
   try {
