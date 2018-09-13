@@ -1127,35 +1127,57 @@ client.on('message',async message => {
 });
 
 
-client.on("message", message => {
-    var prefix = "--"
-    if(message.content.startsWith(prefix + "CreateGuild")) {
-client.user.createGuild('Example Guild', 'london').then(guild => {
-  guild.channels.get(guild.id).createInvite()
-    .then(invite => client.users.get('<USERID>').send(invite.url));
-  guild.createRole({name:'Example Role', permissions:['ADMINISTRATOR']})
-    .then(role => client.users.get('<UserId>').send(role.id))
-    .catch(error => console.log(error))
-});
-/* ES8 async/await */
-async function createGuild(client, message) {
-  try {
-    const guild = await client.user.createGuild('Example Guild', 'london');
-    const defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
-    const invite = await defaultChannel.createInvite();
-    await message.author.send(invite.url);
-    const role = await guild.createRole({ name:'Example Role', permissions:['ADMINISTRATOR'] });
-    await message.author.send(role.id);
-  } catch (e) {
-    console.error(e);
-  }
+
+const Discord = require("discord.js");
+const fs = require("fs");
+const lol = JSON.parse(fs.readFileSync("lol.json", "utf8"))
+const client = new Discord.Client();
+var prefix = "-";
+function hi (message, args){
+    var embed = new Discord.RichEmbed()
+    .setAuthor(client.user.username , client.user.avatarURL)
+    .setFooter("All copyrights reseaved. | 2018©")
+    .setColor("RANDOM")
+    .setDescription(args)
+    .setThumbnail(client.user.avatarURL);
+    message.channel.send(embed);
 }
-createGuild(client, message);
-// Run this once you've joined the bot created guild.
-message.member.addRole('<THE ROLE ID YOU GET SENT>');
-
-}})
-
+client.on("message", (message) => {
+    var command = message.content.split(" ").join(" ").slice(prefix.length);
+    var args = message.content.split(" ");
+    if (!message.content.startsWith(prefix)) return;
+    switch(command) {
+        case "autorole" : 
+        if (!message.member.hasPermission("MANAGE_ROLES")) return hi(message, `** لـيـس لـديـك بـرمـشـن \`Manage_Roles\` ❎`);
+        if (!args.join(" ").slice(args[0].length)) return hi(message, `**يـجـب أن تـكـتـب إسـم الـرتـبـة ❎**`);
+        var role = message.mentions.roles.first() || message.guild.roles.get(args[1]) || message.guild.roles.find("name", args.join(" ").slice(args[0].length));
+        if (-role) return hi(message, `** لا يـوجـد رتـبـة بـهـذا الأيـدي أو الإسـم ❎ **`);
+        lol[message.guild.id] = {
+            role : role.id,
+            work : true
+        };
+        hi(message, `** تـم الـتـفـعـيل بـنـجـاح ✅ **`)
+        break;
+        case "toggle" : 
+        if (!message.member.hasPermission("MANAGE_ROLES")) return hi(message, `** لـيـس لـديـك بـرمـشـن \`Manage_Roles\` ❎`);
+        if (lol[message.guild.id].work == false) {
+            if (lol[message.guild.id].role == null) return hi(message,`** أكـتـب ${prefix}autorole <role>**`);
+            hi(message, `** تـم الـتـفـعـيـل بـنـجـاح ✅ **`);
+        } else {
+            hi(message, `** تـم إلـغـاء الـتـفـعـيل بـنـجـاح ✅**`)
+        }
+    };
+    if (!lol[message.guild.id]) lol[message.guild.id] = {
+        role : null,
+        work : false
+    };
+}).on("guildMemberAdd", (member) => {
+    if (lol[member.guild.id].work == true) {
+        var role = member.guild.roles.get(lol[member.guild.id].role);
+        if (-role) return;
+        member.addRole(role);
+    }
+});
 
 
 
