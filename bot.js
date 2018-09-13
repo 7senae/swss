@@ -474,7 +474,7 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
 
 ❖ -BotTime ➾ to see time bot is online for
 
-❖ -ticket ➾ to make ticket / or to close it 
+❖ -ticket ➾ to make ticket / or -close to close it 
  
 ==================================================================
 
