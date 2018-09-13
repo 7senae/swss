@@ -1127,6 +1127,22 @@ client.on('message',async message => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function hi (message, args){
     var embed = new Discord.RichEmbed()
     .setAuthor(client.user.username , client.user.avatarURL)
@@ -1166,7 +1182,6 @@ client.on("message", (message) => {
         work : false
     };
 }).on("guildMemberAdd", (member) => {
-    if (lol[member.guild.id].work == true) {
         var role = member.guild.roles.get(lol[member.guild.id].role);
         if (-role) return;
         member.addRole(role);
