@@ -1129,13 +1129,7 @@ client.on('message',async message => {
 
 
 
-
-
-
-
-
 const lol = JSON.parse(fs.readFileSync("lol.json", "utf8"))
-var prefix = "-";
 function hi (message, args){
     var embed = new Discord.RichEmbed()
     .setAuthor(client.user.username , client.user.avatarURL)
