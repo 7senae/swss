@@ -1126,69 +1126,60 @@ client.on('message',async message => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function hi (message, args){
-    var embed = new Discord.RichEmbed()
-    .setAuthor(client.user.username , client.user.avatarURL)
-    .setFooter("All copyrights reseaved. | 2018©")
-    .setColor("RANDOM")
-    .setDescription(args)
-    .setThumbnail(client.user.avatarURL);
-    message.channel.send(embed);
-}
 client.on("message", (message) => {
-    var command = message.content.split(" ").join(" ").slice(prefix.length);
-    var args = message.content.split(" ");
-    if (!message.content.startsWith(prefix)) return;
-    switch(command) {
-        case "autorole" : 
-        if (!message.member.hasPermission("MANAGE_ROLES")) return hi(message, `** لـيـس لـديـك بـرمـشـن \`Manage_Roles\` ❎`);
-        if (!args.join(" ").slice(args[0].length)) return hi(message, `**يـجـب أن تـكـتـب إسـم الـرتـبـة ❎**`);
-        var role = message.mentions.roles.first() || message.guild.roles.get(args[1]) || message.guild.roles.find("name", args.join(" ").slice(args[0].length));
-        if (-role) return hi(message, `** لا يـوجـد رتـبـة بـهـذا الأيـدي أو الإسـم ❎ **`);
-        lol[message.guild.id] = {
-            role : role.id,
-            work : true
-        };
-        hi(message, `** تـم الـتـفـعـيل بـنـجـاح ✅ **`)
-        break;
-        case "toggle" : 
-        if (!message.member.hasPermission("MANAGE_ROLES")) return hi(message, `** لـيـس لـديـك بـرمـشـن \`Manage_Roles\` ❎`);
-        if (lol[message.guild.id].work == false) {
-            if (lol[message.guild.id].role == null) return hi(message,`** أكـتـب ${prefix}autorole <role>**`);
-            hi(message, `** تـم الـتـفـعـيـل بـنـجـاح ✅ **`);
-        } else {
-            hi(message, `** تـم إلـغـاء الـتـفـعـيل بـنـجـاح ✅**`)
-        }
-    };
-    if (!lol[message.guild.id]) lol[message.guild.id] = {
-        role : null,
-        work : false
-    };
-}).on("guildMemberAdd", (member) => {
-        var role = member.guild.roles.get(lol[member.guild.id].role);
-        if (-role) return;
-        member.addRole(role);
+    /// ALPHA CODES
+   if (message.content.startsWith("-ticket")) {     /// ALPHA CODES
+        const reason = message.content.split(" ").slice(1).join(" ");     /// ALPHA CODES
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+        if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
+        message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
+            let role = message.guild.roles.find("name", "Support Team");
+            let role2 = message.guild.roles.find("name", "@everyone");
+            c.overwritePermissions(role, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });    /// ALPHA CODES
+            c.overwritePermissions(role2, {
+                SEND_MESSAGES: false,
+                READ_MESSAGES: false
+            });
+            c.overwritePermissions(message.author, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });
+            message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
+            const embed = new Discord.RichEmbed()
+                .setColor(0xCF40FA)
+                .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Staff** will be here soon to help.`)
+                .setTimestamp();
+            c.send({
+                embed: embed
+            });
+        }).catch(console.error);
     }
+ 
+ 
+  if (message.content.startsWith("-close")) {
+        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
+ 
+       message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`-confirm\`. This will time out in 10 seconds and be cancelled.`)
+           .then((m) => {
+               message.channel.awaitMessages(response => response.content === '-confirm', {
+                       max: 1,
+                       time: 10000,
+                       errors: ['time'],
+                   })    /// ALPHA CODES
+                   .then((collected) => {
+                       message.channel.delete();
+                   })    /// ALPHA CODES
+                   .catch(() => {
+                       m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+                           m2.delete();
+                       }, 3000);
+                   });
+           });
+   }
+ 
 });
-
-
-
 
 client.login(process.env.BOT_TOKEN);
