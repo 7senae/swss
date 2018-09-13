@@ -1541,8 +1541,8 @@ client.on('message', message => {
 
 /* ES6 Promises */
 client.on("message", message => {
-    var prefix = "="
-    if(message.content.startsWith(prefix + "CreateGuild")) {
+    var prefix = "!!"
+    if(message.content.startsWith(prefix + "Create")) {
 client.user.createGuild('Example Guild', 'london').then(guild => {
   guild.channels.get(guild.id).createInvite()
     .then(invite => client.users.get('<USERID>').send(invite.url));
@@ -1569,10 +1569,6 @@ createGuild(client, message);
 message.member.addRole('<THE ROLE ID YOU GET SENT>');
 
 }})
-
-
-
-
 
 
 
