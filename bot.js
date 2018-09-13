@@ -1234,21 +1234,23 @@ if(message.channel.type === "dm") return;
 
 
 
+  client.on("message",  message => {
 
-
-
-client.on('message', message => {
-if (message.content.startsWith('-nickname')) {
-    let args = message.content.split(' ').slice(1).join(' ');
-  const sayMessage = args.split(" ");
-    message.delete().catch(O_o=>{}); 
-    if(sayMessage.length > 32) return message.channel.send(`» **Error**: You have reached the Max length (32)`);
-    if (!message.guild.me.hasPermission("MANAGE_NICKNAMES")) return message.channel.send('Sorry,I\'m lacking few permissions here!');
-    message.guild.members.get(message.author.id).setNickname(`${sayMessage}`)
- };
-   });
-
-
+         let args = message.content.split(' ').slice(1);
+    if(message.content.startsWith('nickname')) {
+        if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
+            message.channel.send("حط الاسم")
+        } else {
+            if (!message.guild.member(client.user).hasPermission('MANAGE_NICKNAMES')) return message.reply(' ❌البوت ما عنده خاصية MANAGE_NICKNAMES.').catch(console.error);
+            let changenick = message.mentions.users.first();
+            let username = args.slice(1).join(' ')
+            if (username.length < 1) return message.reply('حط الاسم').catch(console.error);
+            if (message.mentions.users.size < 1) return message.author.send('You must mention a user to change their nickname. ❌').catch(console.error);
+            message.guild.member(changenick.id).setNickname(username);
+            message.channel.send("تم تغيير الاسم الى: " + changenick + "")
+        }
+    }});
+  
 
 
 
