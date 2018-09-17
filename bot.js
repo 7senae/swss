@@ -1585,9 +1585,9 @@ client.on('message', message => {
     }
 });
 
-const fs = require('fs')
 const p = {}
 const premium = ['349095859859881984']
+
 client.on('message', message => {
 if(message.channel.type === "dm") return;
 if(message.author.bot) return;
