@@ -397,7 +397,7 @@ message.reply('**check your DMs! :mailbox_with_mail: **')
 
 
  message.author.sendMessage(`
-__~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#0548
+__~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#1124
 ╭━━╮╭╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮
 ┃╭╮┃┃┃╱╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮
 ┃╰╯╰┫┃╭╮╭┳━━┫╰╯╰┳━┻╮╭╯
@@ -506,7 +506,7 @@ message.reply('**check your DMs! :mailbox_with_mail: **')
 ┃╭━╮┃┃┃┃┃┃┃━┫╭━╮┃╭╮┃┃
 ┃╰━╯┃╰┫╰╯┃┃━┫╰━╯┃╰╯┃╰╮
 ╰━━━┻━┻━━┻━━┻━━━┻━━┻━╯
- __created By__: iiBlueGamer295YT| SK #0548
+ __created By__: iiBlueGamer295YT| SK ♕#1124 
 
 Server Support : https://discord.gg/p4xQ6jv
 
