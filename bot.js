@@ -1585,8 +1585,12 @@ client.on('message', message => {
     }
 });
 
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const fs = require('fs');
 const p = {}
 const premium = ['349095859859881984']
+const prefix = '-'
 
 client.on('message', message => {
 if(message.channel.type === "dm") return;
@@ -1614,7 +1618,5 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠
 
 
 });
-
-
 
 client.login(process.env.BOT_TOKEN);
