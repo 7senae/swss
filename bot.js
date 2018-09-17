@@ -1585,7 +1585,7 @@ client.on('message', message => {
     }
 });
 
-onst fs = require('fs')
+const fs = require('fs')
 const p = {}
 const premium = ['349095859859881984']
 client.on('message', message => {
