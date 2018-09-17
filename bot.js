@@ -1585,7 +1585,35 @@ client.on('message', message => {
     }
 });
 
+onst fs = require('fs')
+const p = {}
+const premium = ['349095859859881984']
+client.on('message', message => {
+if(message.channel.type === "dm") return;
+if(message.author.bot) return;
+if(!p[message.guild.id]) p[message.guild.id] = {
+    prefix: "-"
+}
+const prefix = p[message.guild.id].prefix
+  if (message.content.startsWith(prefix + "setprefix")) {
+    if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
+    let newPrefix = message.content.split(' ').slice(1).join(" ")
+    if(!newPrefix) return message.reply(`**${prefix}setprefix <prefix>**`)
+    p[message.guild.id].prefix = newPrefix
+    message.channel.send(`**${message.guild.name}'تم تغيير البرفكس ${newPrefix}**`);
+} 
+if (message.content === prefix + "mutechannel") {
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠ | لا يوجد لديك صلاحية**');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
 
+           }).then(() => {
+               message.reply("تم تقفيل الشات ✅ ")
+           });
+             }
+
+
+});
 
 
 
