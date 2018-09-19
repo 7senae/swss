@@ -1600,7 +1600,7 @@ if(message.content === prefix + "restart") {
   
   });
 
-onst adminprefix = "!";
+const adminprefix = "-";
 const devs = ['349095859859881984'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
