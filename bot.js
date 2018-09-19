@@ -1630,7 +1630,11 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 
 
+const Discord = require("discord.js");
+const fs = require("fs");
 const lol = JSON.parse(fs.readFileSync("lol.json", "utf8"))
+const client = new Discord.Client();
+var prefix = "!";
 function hi (message, args){
     var embed = new Discord.RichEmbed()
     .setAuthor(client.user.username , client.user.avatarURL)
@@ -1676,7 +1680,6 @@ client.on("message", (message) => {
         member.addRole(role);
     }
 });
-
 
 
 client.login(process.env.BOT_TOKEN);
