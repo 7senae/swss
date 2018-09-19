@@ -1586,7 +1586,19 @@ client.on('message', message => {
 });
 
 
-
+const devs = ['349095859859881984'];
+const child_process = require("child_process");
+///restart
+client.on('message', message => {
+if(message.content === prefix + "restart") {
+      if (!devs.includes(message.author.id)) return;;
+        console.log("⚠️ جاري اعادة تشغيل البوت... ⚠️");
+        client.destroy();
+        child_process.fork(__dirname + "/bot.js");
+        console.log("تم اعادة تشغيل البوت");
+    }
+  
+  });
 
 
 
