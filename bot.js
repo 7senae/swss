@@ -1530,7 +1530,6 @@ if(cmd === `${prefix}suggest`) {
 
 
 client.on('message', message => {
-    cosnt prefix = '-';
     var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.split(' ').slice(1).join(' ');
     var sender = message.author;
