@@ -1601,7 +1601,6 @@ if(message.content === prefix + "restart") {
   });
 
 const adminprefix = "-";
-const devs = ['349095859859881984'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
