@@ -1684,7 +1684,7 @@ client.on('messageReactionRemove', (reaction, user) => {
 });
   
  
-lient.on("message", message => {
+client.on("message", message => {
  
   function discoRole() {
     let random = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
