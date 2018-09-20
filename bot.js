@@ -1717,8 +1717,7 @@ if(message.content.startsWith(prefix + "stopRainBow")) {
  
 });
 const config = require('config.json');
-const prefix = config.prefix;
- 
+
 const allowedUsers = config.allowedUsers;
 const roles = config.roleToDisco;
  
