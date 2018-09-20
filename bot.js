@@ -1683,7 +1683,16 @@ client.on('messageReactionRemove', (reaction, user) => {
   reaction.message.guild.members.get(user.id).removeRole(request.role);
 });
   
- 
+
+
+
+
+
+
+
+
+
+
 client.on("message", message => {
  
   function discoRole() {
