@@ -187,7 +187,7 @@ suggestchannel.send("@everyone  `||` @here ");
 
 client.on('message', message => {
     if (message.author.bot) return;
-    if(message.content.includes('discord.gg')){
+    if(message.content.includes('http://discord.gg')){
                                             if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
         if (!message.member.hasPermissions(['ADMINISTRATOR'])){
         message.delete()
