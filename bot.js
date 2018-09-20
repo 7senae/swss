@@ -1636,10 +1636,10 @@ client.on("message", async message => {
     const command = args.shift().toLowerCase();
     if(message.author.bot) return;
     if(message.content.indexOf(prefix) !== 0) return;
-    if (command == "autoc") {
+    if (command == "autoR") {
       if(!message.channel.guild) return message.reply(`**this ~~command~~ __for servers only__**`);
       if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("sorry you can't do this");
-      if(!args[0] || args[1]) return message.channel.send(`\`\`\`${prefix}autoC <role-name>\`\`\``);
+      if(!args[0] || args[1]) return message.channel.send(`\`\`\`${prefix}autoR <role-name>\`\`\``);
       var role = message.guild.roles.find( role => { return role.name == args[0] });
       if(!role) return message.channel.send(`no role with name ${definedRoleName} found, make sure you entered correct name`);
       if(definedReactionRole != null  || !stopReacord) return message.channel.send("another reaction role request is running");
@@ -1683,20 +1683,6 @@ client.on('messageReactionRemove', (reaction, user) => {
   reaction.message.guild.members.get(user.id).removeRole(request.role);
 });
   
-
-client.on('message', function(message) {
-    if (message.channel.type === "dm") {
-        if (message.author.id === client.user.id) return;
-        var stewart = new Discord.RichEmbed()
-            .setColor('RANDOM')
-            .setTimestamp()
-            .setTitle('``رساله جديده في خاص البوت``')
-            .setThumbnail(`${message.author.avatarURL}`)
-            .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
-            .setFooter(`من (@${message.author.tag})  |  (${message.author.id})`)
-        client.channels.get("492287419224162304").send({ embed: stewart });
-    }
-});
 
 
 
