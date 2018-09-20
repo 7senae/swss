@@ -1,7 +1,7 @@
 {
-  "token" : "Bot token goes here", //لا تلعب بيها بقيه ثابته
+  "token" : "BOT_TOKEN",
   "ms" : 1500,
-  "roleToDisco" : ["RainBow"], // اسم رتبه انت اختارها
-  "prefix" : "-",// تقدر تبدلها
-  "allowedUsers" : ["447782125383450635", "349095859859881984"] ///ايدي حقك
+  "roleToDisco" : ["RainBow"],
+  "prefix" : "-",
+  "allowedUsers" : ["447782125383450635", "349095859859881984"]
 }
