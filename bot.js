@@ -1627,10 +1627,6 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 
 
-
-
-
-if(!prefix) var prefix = "-" ;
 var stopReacord = true;
 var reactionRoles = [];
 var definedReactionRole = null;
