@@ -420,6 +420,8 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#1124
 
 ❖ -kick <user> <reason> ➾ kick from server
 
+❖ -autoC <role name> than react any message ➾ to make auto role with react
+
 ❖ -openc ➾ to open chat
 
 ❖ -colsec ➾ to close chat
