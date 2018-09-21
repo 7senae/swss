@@ -1626,7 +1626,7 @@ client.on('message', message => {
     var sender = message.author;
    
     if(command == prefix + 'sug') {
-        if(!sugChannel) return message.channel.send(':no_entry: | The Suggestions room is not defind! please make room with name `suggestions`');
+        if(!sugChannel) return message.channel.send(':no_entry: | The Suggestions room is not defind! please make room with name `اقتراحات`');
         if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
         if(args.length > 15000) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
         var sugChannel = message.guild.channels.find(r => r.name === 'اقتراحات');
