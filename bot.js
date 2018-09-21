@@ -1704,6 +1704,60 @@ client.on('message',async message => {
     }
   });
 
+client.on('message', message => {
+    var command = message.content.toLowerCase().split(" ")[0];
+    var args = message.content.split(' ').slice(1).join(' ');
+    var sender = message.author;
+    var sugChannel = message.guild.channels.find(r => r.name === 'suggestions');
+   
+    if(command == prefix + 'sug') {
+        if(!sugChannel) return message.channel.send(':no_entry: | The Suggestions room is not defind! please make room with name `suggestions`');
+        if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
+        if(args.length > 15000) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
+       
+        message.delete();
+        message.channel.send(':octagonal_sign: __هل أنت متأكد انك تريد ارسال اقتراحك؟__').then(msg => {
+            msg.react('✅').then(() => msg.react('❎'))
+           
+            let sugSure = new Discord.RichEmbed()
+            .setColor('BLUE')
+            .setDescription(`**${args}**`)
+            .setTimestamp()
+            .setFooter(sender.tag, sender.avatarURL)
+           
+            message.channel.send(sugSure).then(msg1 => {
+               
+                let yes = (reaction, user) => reaction.emoji.name === '✅'  && user.id === sender.id;
+                let no = (reaction, user) => reaction.emoji.name === '❎' && user.id === sender.id;
+               
+                let send = msg.createReactionCollector(yes);
+                let dontSend = msg.createReactionCollector(no);
+               
+                send.on('collect', r => {
+                    msg.delete();
+                    msg1.delete();
+                    let sugMsg = new Discord.RichEmbed()
+                    .setTitle(':bell: New Suggestion! :bell:')
+                    .setColor('RANDOM')
+                    .setThumbnail(sender.avatarURL)
+                    .setDescription(`**\n:arrow_right: Sender:**\n<@${sender.id}>\n\n:pencil: **Suggestion:**\n${args}`)
+                    .setTimestamp()
+                    .setFooter(sender.tag, sender.avatarURL)
+                   
+                    sugChannel.send(sugMsg).then(msg => {
+                        msg.react('✅').then(() => msg.react('❎'));
+                    })
+                    message.channel.send(`:white_check_mark: | <@${sender.id}> The Suggestion was Successfully send to sugs room!`).then(msg => msg.delete(5000));
+                });
+                dontSend.on('collect', r => {
+                    msg.delete();
+                    msg1.delete();
+                    message.channel.send(`:x: | <@${sender.id}> The suggestion was Successfully canceld.`).then(msg => msg.delete(5000));
+                });
+            })
+        })
+    }
+});
 
 
 client.login(process.env.BOT_TOKEN);
