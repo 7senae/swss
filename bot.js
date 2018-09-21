@@ -1715,24 +1715,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 
 });
 
-client.on('message', message => {
-if (message.author.bot) return;
- const args = message.content.slice(prefix.length).trim().split(/ +/g);
-const command = args.shift().toLowerCase();
-if (message.author.bot) return;
-    if (command === 'closec') {
-                        if(!message.channel.guild) return;
-  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this command for admins only').then(message => message.delete(5000))
-           message.channel.overwritePermissions(message.guild.id, {
-         SEND_MESSAGES: false
-
-           }).then(() => {
- const starEmbed = new Discord.RichEmbed()
-               .setAuthor('the chat was colsed : '+message.author.username)
-
-
-
 
 
 
