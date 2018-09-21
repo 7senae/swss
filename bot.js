@@ -1626,6 +1626,7 @@ client.on('message', message => {
         if(!sugChannel) return message.channel.send(':no_entry: | The Suggestions room is not defind! please make room with name `suggestions`');
         if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
         if(args.length > 15000) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
+        var sugChannel = message.guild.channels.find(r => r.name === 'suggestions');
        
         message.delete();
         message.channel.send(':octagonal_sign: __هل أنت متأكد انك تريد ارسال اقتراحك؟__').then(msg => {
@@ -1670,6 +1671,84 @@ client.on('message', message => {
         })
     }
 });
+
+
+
+
+client.on('message', message => {
+ const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
+if (message.author.bot) return;
+    if (command === 'closec') {
+                        if(!message.channel.guild) return;
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this command for admins only').then(message => message.delete(5000))
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+ const starEmbed = new Discord.RichEmbed()
+               .setAuthor('the chat was colsed : '+message.author.username)
+                .setColor('RANDOM')
+               
+               message.channel.send(starEmbed)
+               });
+             }
+if (command === "openc") {
+    
+    if(!message.channel.guild) return;
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this cimmand for admins only ').then(message => message.delete(5000))
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               const starEmbed = new Discord.RichEmbed()
+               .setAuthor('the chat was opened: '+message.author.username)
+                        .setColor('RANDOM')
+               
+               message.channel.send(starEmbed)
+           });
+             }
+
+
+
+});
+
+client.on('message', message => {
+if (message.author.bot) return;
+ const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
+if (message.author.bot) return;
+    if (command === 'closec') {
+                        if(!message.channel.guild) return;
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this command for admins only').then(message => message.delete(5000))
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+ const starEmbed = new Discord.RichEmbed()
+               .setAuthor('the chat was colsed : '+message.author.username)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 client.login(process.env.BOT_TOKEN);
