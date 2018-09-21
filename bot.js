@@ -1656,7 +1656,7 @@ client.on('message', message => {
                     .setTitle(':bell: New Suggestion! :bell:')
                     .setColor('RANDOM')
                     .setThumbnail(sender.avatarURL)
-                    .setDescription(`**\n:arrow_right: Sender:**\n<@${sender.id}>\n\n:pencil: **Suggestion:**\n${args}`)
+                    .setDescription(`**\n:arrow_right: Sender:**\n<@${sender.id}>\n\n:pencil: **اقتراحات:**\n${args}`)
                     .setTimestamp()
                     .setFooter(sender.tag, sender.avatarURL)
                    
