@@ -1760,6 +1760,72 @@ client.on('message',async message => {
     }
   });
 
+client.on('message', message => {
+    if(message.author.bot) return; // Alpha Codes Server.
+    if(message.channel.type === 'dm') return;
+   
+    var args = message.content.toLowerCase().split(' '); // Alpha Codes Server.
+    var command = args[0];
+    var prefix = '-'; // <=========== تقدر تغير البرفكس
+   
+    if(command == prefix + 'members') {
+        var memberS = message.guild.members.size; // Alpha Codes Server.
+        if(!args[1] || isNaN(args[1]) || args[1] === '1') {
+            var number = 1;
+ 
+            if(memberS > 10) {
+                var more = `\n__:sparkles: **More?** \`\`${prefix}members 2\`\` (${Math.round(memberS / 10)} pages)`;
+            }else {
+                var more = '__'; // Alpha Codes Server.
+            }
+ 
+            let embedS = new Discord.RichEmbed()
+            .setTitle(`:white_check_mark: **${memberS}** Members.`) // Alpha Codes Server.
+            .setColor('GREEN')
+            .setDescription(`__\n__${message.guild.members.map(m => `**${number++}.** \`\`${m.user.tag}\`\``).slice(0, 10).join('\n')}__\n${more}`)
+            .setTimestamp()
+            .setFooter(message.author.tag, message.author.avatarURL)
+ 
+            message.channel.send(embedS);
+        }else if(!isNaN(args[1])) {
+            var number = 1;
+ 
+            if(memberS > 10) {
+                var more = `choose **1** To **${Math.round(memberS / 10)}**`;
+            }else {
+                var more = 'This server have **1** Page only.'; // Alpha Codes Server.
+            }
+ 
+            if(Math.round(args[1].replace('-', '')) * 10 - 9 > memberS) return message.channel.send(`:no_entry: | I couldn\'t find the page. ${more}`);
+ 
+           let embedS = new Discord.RichEmbed()
+           .setTitle(`:white_check_mark: **${memberS}** Members.`) // Alpha Codes Server.
+           .setColor('GREEN')
+           .setDescription(`__\n__${message.guild.members.map(m => `**${number++}.** \`\`${m.user.tag}\`\``).slice(10 * Math.round(args[1].replace('-', '')) - 10, 10 * Math.round(args[1].replace('-', ''))).join('\n')}\n\n:sparkles: **More?** \`\`${prefix}members ${Math.round(args[1].replace('-', '')) + 1}\`\` (${Math.round(memberS / 10)} pages)`)
+           .setTimestamp()
+           .setFooter(message.author.tag, message.author.avatarURL)
+ 
+           message.channel.send(embedS);
+       }
+   }
+ 
+ 
+   if(command == prefix + 'info-member') { // Alpha Codes Server.
+       if(!args[1]) return message.channel.send(`:no_entry: | Please enter the member number. \`\`If you want to know how to get the member number please type ${prefix}members (page)\`\``);
+       if(isNaN(args[1])) return message.channel.send(`:no_entry: | Please enter the member number. \`\`If you want to know how to get the member number please type ${prefix}members (page)\`\``);
+       if(args[1] > message.guild.members.size) return message.channel.send(`:no_entry: | I couldn\'t find the user. Please selecte number from 1 to ${message.guild.members.size}`);
+ 
+       let memberInfo = new Discord.RichEmbed()
+       .setTitle(`:white_check_mark: Informations about **${message.guild.members.map(m => m.user.tag).slice(Math.round(args[1].replace('-', '')) - 1, Math.round(args[1].replace('-', '')))}**`) // Alpha Codes Server.
+       .setThumbnail(`${message.guild.members.map(m => m.user.avatarURL).slice(Math.round(args[1].replace('-', '')) - 1, Math.round(args[1].replace('-', '')))}`)
+       .setColor('GREEN')
+       .setDescription(`__\n__**INFORMATIONS USER:**\n\n**User ID:** \`\`${message.guild.members.map(m => m.user.id).slice(Math.round(args[1].replace('-', '')) - 1, Math.round(args[1].replace('-', '')))}\`\`\n**User Tag:** \`\`#${message.guild.members.map(m => m.user.discriminator).slice(Math.round(args[1].replace('-', '')) - 1, Math.round(args[1].replace('-', '')))}\`\`\n**User Created at:** \`\`${message.guild.members.map(m => Days(m.user.createdAt)).slice(Math.round(args[1].replace('-', '')) - 1, Math.round(args[1].replace('-', '')))}\`\`\n**User Joined at:** \`\`${message.guild.members.map(m => Days(m.joinedAt)).slice(Math.round(args[1].replace('-', '')) - 1, Math.round(args[1].replace('-', '')))}\`\`\n**User Status:** \`\`${message.guild.members.map(m => m.user.presence.status).slice(Math.round(args[1].replace('-', '')) - 1, Math.round(args[1].replace('-', '')))}\`\`\n**User Roles Amount:** \`\`${message.guild.members.map(m => m.roles.size - 1).slice(Math.round(args[1].replace('-', '')) - 1, Math.round(args[1].replace('-', '')))} Role.\`\`\n**User Bot:** \`\`${message.guild.members.map(m => m.user.bot).slice(Math.round(args[1].replace('-', '')) - 1, Math.round(args[1].replace('-', '')))}\`\``) // Alpha Codes Server.
+       .setTimestamp()
+       .setFooter(message.author.tag, message.author.avatarURL) // Alpha Codes Server.
+ 
+       message.channel.send(memberInfo);
+   } // Alpha Codes Server.
+});
 
 
 client.login(process.env.BOT_TOKEN);
