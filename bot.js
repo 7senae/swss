@@ -1617,6 +1617,9 @@ client.on('message',async message => {
     }
   });
 
+
+
+
 client.on('message', message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.split(' ').slice(1).join(' ');
@@ -1626,14 +1629,14 @@ client.on('message', message => {
         if(!sugChannel) return message.channel.send(':no_entry: | The Suggestions room is not defind! please make room with name `suggestions`');
         if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
         if(args.length > 15000) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
-        var sugChannel = message.guild.channels.find(r => r.name === 'suggestions');
+        var sugChannel = message.guild.channels.find(r => r.name === 'اقتراحات');
        
         message.delete();
         message.channel.send(':octagonal_sign: __هل أنت متأكد انك تريد ارسال اقتراحك؟__').then(msg => {
             msg.react('✅').then(() => msg.react('❎'))
            
             let sugSure = new Discord.RichEmbed()
-            .setColor('BLUE')
+            .setColor('RANDOM')
             .setDescription(`**${args}**`)
             .setTimestamp()
             .setFooter(sender.tag, sender.avatarURL)
