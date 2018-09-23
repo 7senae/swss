@@ -1721,58 +1721,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 
 
 
-client.on('message', async (message) => {
-    if(message.content.startsWith('-botNick')) {
-         let args = message.content.split(' ').slice(1);
-  try {
-    if (args.length > 0) {
-      await message.guild.me.setNickname(args.join(' '));
 
-      message.channel.send({
-        embed: {
-          color: message.colors.GREEN,
-          description: `${message.user.username}'s nick is now set to **${args.join(' ')}** on this guild.`
-        }
-      }).catch(e => {
-        message.log.error(e);
-      });
-    }
-    else {
-      await message.guild.me.setNickname('');
-
-      message.channel.send({
-        embed: {
-          color: message.colors.GREEN,
-          description: `${message.user.username}'s nick has been reset on this guild.`
-        }
-      }).catch(e => {
-        message.log.error(e);
-      });
-    }
-  }
-  catch (e) {
-    message.log.error(e);
-  }
-}
-});
-
-
-  client.on("message",  message => {
-
-         let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith('nickname')) {
-        if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
-            message.channel.send("حط الاسم")
-        } else {
-            if (!message.guild.member(client.user).hasPermission('MANAGE_NICKNAMES')) return message.reply(' ❌البوت ما عنده خاصية MANAGE_NICKNAMES.').catch(console.error);
-            let changenick = message.mentions.users.first();
-            let username = args.slice(1).join(' ')
-            if (username.length < 1) return message.reply('حط الاسم').catch(console.error);
-            if (message.mentions.users.size < 1) return message.author.send('You must mention a user to change their nickname. ❌').catch(console.error);
-            message.guild.member(changenick.id).setNickname(username);
-            message.channel.send("تم تغيير الاسم الى: " + changenick + "")
-        }
-    }});
   
 
 
