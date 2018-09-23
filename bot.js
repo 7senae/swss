@@ -1814,9 +1814,9 @@ client.on('message', message => {
     if(message.content.startsWith(prefix + 'nick')) {
         var args = message.content.split(' ').slice(2);
             let user = message.guild.member(message.mentions.users.first());
-    message.guild.member(user).setNickname(`${args}`);
+    message.guild.member(user).setNickname(`${argresult}`);
 
 }
-})
+});
 
 client.login(process.env.BOT_TOKEN);
