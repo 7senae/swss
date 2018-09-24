@@ -832,7 +832,6 @@ client.on('message', message => {
 
 
 client.on('message',function(message) {
-    if(msg.author.bot) return;
     if(message.content.startsWith(`<@${client.user.id}>`)) {
         message.channel.send('Hey Im BlueBot')
         message.channel.send('if you need by a support write -support ')
