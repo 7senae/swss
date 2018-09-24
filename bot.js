@@ -123,7 +123,7 @@ client.on('message', message => {
 });
 
 
-client.on('message', msg => {
+client.on('message', message =>{
 	if(msg.author.bot) return;
  if (msg.content.startsWith(prefix + 'msg')) {
       let args = msg.content.split(' ').slice(1)
@@ -305,7 +305,7 @@ client.on('message',function(message) {
 let args = message.content.split(" ").slice(1).join(" ");
 if(message.content.startsWith(prefix + "say")) {
 if(!args) return;
-message.channel.send(`**#-  ${args}**`); 
+message.channel.send(`${args}`); 
   }
 });
 
