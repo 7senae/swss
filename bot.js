@@ -1629,8 +1629,8 @@ client.on('message', message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.split(' ').slice(1).join(' ');
     var sender = message.author;
-    if(msg.author.bot) return;
     if(command == prefix + 'sug') {
+    if(msg.author.bot) return;
         if(!sugChannel) return message.channel.send(':no_entry: | The Suggestions room is not defind! please make room with name `اقتراحات`');
         if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
         if(args.length > 15000) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
