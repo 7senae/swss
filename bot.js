@@ -123,9 +123,9 @@ client.on('message', message => {
 });
 
 
-client.on('message', message =>{
- if (msg.content.startsWith(prefix + 'dm')) {
-      if(msg.author.bot) return;
+const perfix = '-';
+client.on('message', msg => {
+ if (msg.content.startsWith(prefix + 'msg')) {
       let args = msg.content.split(' ').slice(1)
       if (!args[0]) return msg.reply(`**منشن الشخص اولا**`)
       if (!args[1]) return msg.reply(`**ما هي الرساله المطلوب ارسالها**`)
