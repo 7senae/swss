@@ -124,8 +124,8 @@ client.on('message', message => {
 
 
 client.on('message', message =>{
-	if(msg.author.bot) return;
  if (msg.content.startsWith(prefix + 'msg')) {
+      if(msg.author.bot) return;
       let args = msg.content.split(' ').slice(1)
       if (!args[0]) return msg.reply(`**منشن الشخص اولا**`)
       if (!args[1]) return msg.reply(`**ما هي الرساله المطلوب ارسالها**`)
