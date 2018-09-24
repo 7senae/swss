@@ -832,7 +832,7 @@ client.on('message', message => {
 
 
 client.on('message',function(message) {
-    
+    if(msg.author.bot) return;
     if(message.content.startsWith(`<@${client.user.id}>`)) {
         message.channel.send('Hey Im BlueBot')
         message.channel.send('if you need by a support write -support ')
@@ -946,6 +946,7 @@ client.on('message',async message => {
   var duration;
   var gMembers;
   var filter = m => m.author.id === message.author.id;
+  if(msg.author.bot) return;
   if(message.content.startsWith(prefix + "giveaway")) {
      //return message.channel.send(':heavy_multiplication_x:| **هذا الامر معطل حاليا.. ``حاول في وقت لاحق``**');
     if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
@@ -1012,9 +1013,9 @@ client.on('message',async message => {
 });
 
 client.on("message", (message) => {
-    /// ALPHA CODES
-   if (message.content.startsWith("-ticket")) {     /// ALPHA CODES
-        const reason = message.content.split(" ").slice(1).join(" ");     /// ALPHA CODES
+   if(msg.author.bot) return;
+   if (message.content.startsWith("-ticket")) {    
+        const reason = message.content.split(" ").slice(1).join(" ");   
         if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
         if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
         message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
@@ -1023,7 +1024,7 @@ client.on("message", (message) => {
             c.overwritePermissions(role, {
                 SEND_MESSAGES: true,
                 READ_MESSAGES: true
-            });    /// ALPHA CODES
+            });    
             c.overwritePermissions(role2, {
                 SEND_MESSAGES: false,
                 READ_MESSAGES: false
@@ -1069,6 +1070,7 @@ client.on("message", (message) => {
 
 
 client.on("message", async message => {
+if(msg.author.bot) return;
 if(message.channel.type === "dm") return;
  if(message.content === (prefix + "BotTime")) { /// حط اي كلمة تبيها
  if (!message.channel.guild) return message.reply('**هذا الامر للسيرفرات فقط**');
@@ -1120,7 +1122,7 @@ client.on('message', message => {
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
    
-    var command = message.content.toLowerCase().split(" ")[0]; // حقوق الفا كوودز Alpha Codes.
+    var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.toLowerCase().split(" ");
     var userM = message.guild.member(message.mentions.users.first() || message.guild.members.find(m => m.id === args[1]));
     var prefix = '-'; // هنا تقدر تغير البرفكس <==================
@@ -1516,6 +1518,7 @@ client.on('messageReactionRemove', (reaction, user) => {
   
 
 client.on('message',async message => {
+    if(msg.author.bot) return;
     if(message.content.startsWith(prefix + "setVoice")) {
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
@@ -1534,6 +1537,7 @@ client.on('message',async message => {
   });
 
   client.on('message',async message => {
+    if(msg.author.bot) return;
     if(message.content.startsWith(prefix + "setCount")) {
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات ال��افية**');
@@ -1553,6 +1557,7 @@ client.on('message',async message => {
 
     
   client.on('message',async message => {
+    if(msg.author.bot) return;
     if(message.content.startsWith(prefix + "setTime")) {
     if(!message.guild.member(message.author).hasPermission('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermission(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
@@ -1595,6 +1600,7 @@ client.on('message',async message => {
 
   
   client.on('message',async message => {
+    if(msg.author.bot) return;
     if(message.content.startsWith(prefix + "setDate")) {
         var currentTime = new Date(),
         years = currentTime.getFullYear(),
@@ -1624,7 +1630,7 @@ client.on('message', message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.split(' ').slice(1).join(' ');
     var sender = message.author;
-   
+    if(msg.author.bot) return;
     if(command == prefix + 'sug') {
         if(!sugChannel) return message.channel.send(':no_entry: | The Suggestions room is not defind! please make room with name `اقتراحات`');
         if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
@@ -1823,6 +1829,7 @@ client.on('message', message => {
 
   client.on('message', ReeBeL => {
 if(ReeBeL.content.startsWith(prefix + 'email')) {
+if(msg.author.bot) return;
 function randomem() {
 let email = '';
 const ReBeL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._"\'';
