@@ -623,7 +623,7 @@ let embed = new Discord.RichEmbed()
  .setFooter("BlueBot")
     .setTimestamp()
 
-  channel.sendEmbed(embed);
+  channel.send(embed);
 });
 
 
