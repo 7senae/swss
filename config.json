@@ -1,7 +1,0 @@
-{
-  "token" : "BOT_TOKEN",
-  "ms" : 1500,
-  "roleToDisco" : ["RainBow"],
-  "prefix" : "-",
-  "allowedUsers" : ["354716386716811264"]
-}
