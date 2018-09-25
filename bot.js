@@ -948,20 +948,20 @@ client.on('message',async message => {
   }
 });
 
-client.on("message", (edited) => {
-    
-  if (edited.content === '-new') {
-        const reason = edited.content.split(" ").slice(1).join(" ");
-        if (!edited.guild.roles.exists("name", "Support Team")) return edited.channel.send(`**يجب عمل رتبة بأسم \`فريق الدعم\`**`);
-        if (edited.guild.channels.exists("name", "ticket-" + edited.author.id)) return edited.channel.send(`لديك تذكرة من الأسآس :joy:`);
-        edited.guild.createChannel(`just-ticket`, "text").then(c => {
-            let edited1 = edited.guild.roles.find("name", "Support Team");
-            let edited2 = edited.guild.roles.find("name", "@everyone");
-            c.overwritePermissions(edited1, {
+client.on("message", (message) => {
+    /// ALPHA CODES
+   if (message.content.startsWith("-ticket")) {     /// ALPHA CODES
+        const reason = message.content.split(" ").slice(1).join(" ");     /// ALPHA CODES
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+        if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
+        message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
+            let role = message.guild.roles.find("name", "Support Team");
+            let role2 = message.guild.roles.find("name", "@everyone");
+            c.overwritePermissions(role, {
                 SEND_MESSAGES: true,
                 READ_MESSAGES: true
-            });
-            c.overwritePermissions(edited2, {
+            });    /// ALPHA CODES
+            c.overwritePermissions(role2, {
                 SEND_MESSAGES: false,
                 READ_MESSAGES: false
             });
@@ -969,38 +969,40 @@ client.on("message", (edited) => {
                 SEND_MESSAGES: true,
                 READ_MESSAGES: true
             });
-            edited.channel.send(`:white_check_mark: تـم فتح التذكرة , #${c.name}.`);
+            message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
             const embed = new Discord.RichEmbed()
                 .setColor(0xCF40FA)
-                .addField(` ${message.author.username}!`, `**مرحبآ    , لدنيا فريق المساعده ليساعدك في أقرب وقت . **`)
+                .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Staff** will be here soon to help.`)
                 .setTimestamp();
             c.send({
                 embed: embed
             });
-        }).catch(console.error); 
+        }).catch(console.error);
     }
-    if (edited.content === '-close') {
-        if (!edited.channel.name.startsWith(`ticket-`)) return edited.channel.send(`**لا تستطيع :x:**`);
-
-        edited.channel.send(`**هل انت متأكد ؟ ** `)
-            .then((m) => {
-                edited.channel.awaitMessages(response => response.content === 'نعم', {
-                        max: 1,
-                        time: 10000,
-                        errors: ['time'],
-                    })
-                    .then((collected) => {
-                        edited.channel.delete();
-                    })
-                    .catch(() => {
-                        m.edit('وقت الأغلاق أنتهي , لن تمسح التذكرة .').then(m2 => {
-                            m2.delete();
-                        }, 3000);
-                    });
-            });
-        }
-
-    });
+ 
+ 
+  if (message.content.startsWith("-close")) {
+        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
+ 
+       message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`#confirm\`. This will time out in 10 seconds and be cancelled.`)
+           .then((m) => {
+               message.channel.awaitMessages(response => response.content === '-confirm', {
+                       max: 1,
+                       time: 10000,
+                       errors: ['time'],
+                   })    /// ALPHA CODES
+                   .then((collected) => {
+                       message.channel.delete();
+                   })    /// ALPHA CODES
+                   .catch(() => {
+                       m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+                           m2.delete();
+                       }, 3000);
+                   });
+           });
+   }
+ 
+});
 
 client.on("message", async message => {
 if(message.author.bot) return;
