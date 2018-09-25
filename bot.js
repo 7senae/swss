@@ -384,87 +384,49 @@ __~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#1124
 ╔[❖════════════❖]╗
              Prefix = ' - '
 ╚[❖════════════❖]╝
-
 ╔[❖════════════❖]╗
              Admin Commands
 ╚[❖════════════❖]╝
-
 ❖ -bc <message> ➾ message all members in server
-
 ❖ -mute <user> <time> <reason> ➾ mute from server
-
 ❖ -unmute <user> ➾ unmute from server
-
 ❖ -kick <user> <reason> ➾ kick from server
-
 ❖ -autoC <role name> than react any message ➾ to make auto role with react
-
 ❖ -openc ➾ to open chat
-
 ❖ -colsec ➾ to close chat
-
 ❖ -clear <number> ➾ clear chat
-
 ❖ -ban <mention> <reason> ➾ ban member from server
-
 ❖ -unban <id> ➾ unban from server
-
 ╔[❖════════════❖]╗
             General  Commands
 ╚[❖════════════❖]╝
-
 ❖ -id ➾ your id
-
 ❖ -daily ➾ to get free credit
-
 ❖ -credit ➾ to see your credit
-
 ❖ -trans <@someone> <number> ➾ to get someone credit
-
 ❖ -report ➾ to report someone in server
-
 ❖ -avatar ➾ your avatar account
-
 ❖ -ping ➾ to see ping
-
 ❖ -info ➾ user & bot informations 
-
 ❖ -bot ➾ bot informations
-
 ❖ -server ➾  informations
-
 ❖ make room with name <welcome> ➾ for join-leave log
-
 ❖ -member ➾ members info
-
 ❖ -own ➾ bot owner
-
 ❖ -invite ➾ bot invite link
-
 ❖ -support ➾ server support link
-
 ❖ -sug <Suggestion> ➾ for Suggestions 
-
 ❖ -msg ➾  for send msg for someone by bot
-
 ❖ -send ➾  to send message with react in it to channel 
-
 ❖ -giveaway <room name> <time in min> <giveaway name> ➾ make giveaway! 
-
 ❖ -BotTime ➾ to see time bot is online for
-
 ❖ -ticket ➾ to make ticket / or -close to close it 
  
 ==================================================================
-
 Server support: https://discord.gg/p4xQ6jv
-
 ==================================================================
-
 bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot
-
 ==================================================================
-
 `);
 
     }
@@ -486,9 +448,7 @@ message.reply('**check your DMs! :mailbox_with_mail: **')
 ┃╰━╯┃╰┫╰╯┃┃━┫╰━╯┃╰╯┃╰╮
 ╰━━━┻━┻━━┻━━┻━━━┻━━┻━╯
  __created By__: iiBlueGamer295YT| SK ♕#1124 
-
 Server Support : https://discord.gg/p4xQ6jv
-
 bot link : https://discordapp.com/api/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot
 `);
 
@@ -922,7 +882,7 @@ client.on('message',async message => {
   var duration;
   var gMembers;
   var filter = m => m.author.id === message.author.id;
-  if(msg.author.bot) return;
+  if(message.author.bot) return;
   if(message.content.startsWith(prefix + "giveaway")) {
      //return message.channel.send(':heavy_multiplication_x:| **هذا الامر معطل حاليا.. ``حاول في وقت لاحق``**');
     if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
@@ -1043,7 +1003,7 @@ client.on("message", (edited) => {
     });
 
 client.on("message", async message => {
-if(msg.author.bot) return;
+if(message.author.bot) return;
 if(message.channel.type === "dm") return;
  if(message.content === (prefix + "BotTime")) { /// حط اي كلمة تبيها
  if (!message.channel.guild) return message.reply('**هذا الامر للسيرفرات فقط**');
@@ -1492,7 +1452,7 @@ client.on('messageReactionRemove', (reaction, user) => {
 
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "setVoice")) {
-    if(msg.author.bot) return;
+    if(message.author.bot) return;
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
     message.channel.send('✅| **تم عمل الروم بنجاح**');
@@ -1511,7 +1471,7 @@ client.on('message',async message => {
 
   client.on('message',async message => {
     if(message.content.startsWith(prefix + "setCount")) {
-    if(msg.author.bot) return;
+    if(message.author.bot) return;
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات ال��افية**');
     message.channel.send('✅| **تم عمل الروم بنجاح**');
@@ -1531,7 +1491,7 @@ client.on('message',async message => {
     
   client.on('message',async message => {
     if(message.content.startsWith(prefix + "setTime")) {
-    if(msg.author.bot) return;
+    if(message.author.bot) return;
     if(!message.guild.member(message.author).hasPermission('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermission(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
     message.channel.send('✅| **تم عمل الروم بنجاح**');
@@ -1579,7 +1539,7 @@ client.on('message',async message => {
         month = currentTime.getMonth() + 1,
         day = currentTime.getDate(),
         week = currentTime.getDay();
-    if(msg.author.bot) return;
+    if(message.author.bot) return;
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
     message.channel.send('✅| **تم عمل الروم بنجاح**');
@@ -1604,7 +1564,7 @@ client.on('message', message => {
     var args = message.content.split(' ').slice(1).join(' ');
     var sender = message.author;
     if(command == prefix + 'sug') {
-    if(msg.author.bot) return;
+    if(message.author.bot) return;
         if(!sugChannel) return message.channel.send(':no_entry: | The Suggestions room is not defind! please make room with name `اقتراحات`');
         if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
         if(args.length > 15000) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
@@ -1663,7 +1623,7 @@ const command = args.shift().toLowerCase();
 if (message.author.bot) return;
     if (command === 'closec') {
                         if(!message.channel.guild) return;
-  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return message.reply('❌ **البوت لا يمتلك صلاحية**');
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this command for admins only').then(message => message.delete(5000))
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: false
@@ -1679,7 +1639,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this 
 if (command === "openc") {
     
     if(!message.channel.guild) return;
-  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return message.reply('❌ **البوت لا يمتلك صلاحية**');
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('this cimmand for admins only ').then(message => message.delete(5000))
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: true
