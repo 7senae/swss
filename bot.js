@@ -1800,5 +1800,14 @@ const codes = {
   };
   });
 
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "news")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     ** code print ** ' ,' *تم اضافة كود ** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
 
 client.login(process.env.BOT_TOKEN);
