@@ -1573,7 +1573,7 @@ client.on('message',async message => {
 client.on('message', message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.split(' ').slice(1).join(' ');
-	var sugChannel = message.guild.channels.find(r => r.name === 'الاقتراحات');
+	var sugChannel = message.guild.channels.find(r => r.name === 'suggest');
     var sender = message.author;
 	var prefix = '-';
 	
@@ -1581,7 +1581,7 @@ client.on('message', message => {
 		if(message.author.bot) return;
 		if(message.channel.type === 'dm') return;
 		
-		if(!sugChannel) return message.channel.send(':no_entry: | I couldn\'t find the room! Please make room with name `الاقتراحات`');
+		if(!sugChannel) return message.channel.send(':no_entry: | I couldn\'t find the room! Please make room with name `suggest`');
 		if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
 		if(args.length > 1500) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
        
@@ -1610,7 +1610,7 @@ client.on('message', message => {
                     .setTitle(':bell: New Suggestion! :bell:')
                     .setColor('RANDOM')
                     .setThumbnail(sender.avatarURL)
-                    .setDescription(`**\n:arrow_right: Sender:**\n<@${sender.id}>\n\n:pencil: **اقتراحات:**\n${args}`)
+                    .setDescription(`**\n:arrow_right: Sender:**\n<@${sender.id}>\n\n:pencil: **The Suggest:**\n${args}`)
                     .setTimestamp()
                     .setFooter(sender.tag, sender.avatarURL)
                    
@@ -1855,7 +1855,7 @@ client.on('message', async message => {
         if(message.author.bot) return;
         if(message.channel.type === 'dm') return;
  
-        var modRole = message.guild.roles.find(r => r.name === '✲ SUPPORT');
+        var modRole = message.guild.roles.find(r => r.name === 'Support Team');
        
         if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send(':x: | معك الرتبة');// Alpha Codes
         if(!subChannel) return message.channel.send(':x: | يجب ان يتوفر روم اسمه `support-join`');// Alpha Codes
