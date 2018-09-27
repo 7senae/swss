@@ -1561,17 +1561,21 @@ client.on('message',async message => {
 
 
 
+
 client.on('message', message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.split(' ').slice(1).join(' ');
+	var sugChannel = message.guild.channels.find(r => r.name === 'الاقتراحات' && m.type === 'text');
     var sender = message.author;
+	var prefix = '-';
+	
     if(command == prefix + 'sug') {
-    if(message.author.bot) return;
-       
-        if(message.guild.channels.find('name', 'الاقتراحات')) {   
-        if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
-        if(args.length > 15000) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
-        var sugChannel = message.guild.channels.find(r => r.name === 'الاقتراحات');
+		if(message.author.bot) return;
+		if(message.channel.type === 'dm') return;
+		
+		if(!sugChannel) return message.channel.send(':no_entry: | I couldn\'t find the room! Please make room with name `الاقتراحات`');
+		if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
+		if(args.length > 1500) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
        
         message.delete();
         message.channel.send(':octagonal_sign: __هل أنت متأكد انك تريد ارسال اقتراحك؟__').then(msg => {
@@ -1616,6 +1620,21 @@ client.on('message', message => {
         })
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
