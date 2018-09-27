@@ -1565,7 +1565,7 @@ client.on('message',async message => {
 client.on('message', message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.split(' ').slice(1).join(' ');
-	var sugChannel = message.guild.channels.find(r => r.name === 'الاقتراحات' && m.type === 'text');
+	var sugChannel = message.guild.channels.find(r => r.name === 'الاقتراحات' && r.type = `text`);
     var sender = message.author;
 	var prefix = '-';
 	
