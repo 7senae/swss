@@ -1560,16 +1560,6 @@ client.on('message',async message => {
 
 
 
-
-
-
-
-
-
-
-
-
-
 client.on('message', message => {
     var command = message.content.toLowerCase().split(" ")[0];
     var args = message.content.split(' ').slice(1).join(' ');
@@ -1751,7 +1741,7 @@ if(user) {
 if(!message.guild.channels.get(channels[message.author.id].channel).permissionsFor(user.id).has(`CONNECT`)) return message.channel.send(`**The user already cannot connect to your voice channel**`);
 try {
 if(message.guild.members.get(user.id).voiceChannelID === channels[message.author.id].channel) {
-message.guild.members.get(user.id).setVoiceChannel('493238389483765760'); // المكان الي راح ينحطوله بعد ما يصير لهم lock
+message.guild.members.get(user.id).setVoiceChannel('495983528450850816'); // المكان الي راح ينحطوله بعد ما يصير لهم lock
 }
 } catch (error) {
 console.log(error)
