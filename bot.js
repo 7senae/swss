@@ -1741,7 +1741,7 @@ if(user) {
 if(!message.guild.channels.get(channels[message.author.id].channel).permissionsFor(user.id).has(`CONNECT`)) return message.channel.send(`**The user already cannot connect to your voice channel**`);
 try {
 if(message.guild.members.get(user.id).voiceChannelID === channels[message.author.id].channel) {
-message.guild.members.get(user.id).setVoiceChannel('495983528450850816'); // المكان الي راح ينحطوله بعد ما يصير لهم lock
+message.guild.members.get(user.id).setVoiceChannel('458473200238592001'); // المكان الي راح ينحطوله بعد ما يصير لهم lock
 }
 } catch (error) {
 console.log(error)
