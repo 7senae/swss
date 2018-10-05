@@ -1970,7 +1970,12 @@ function errormsg(message, err, cmd) {
 }
 
 
-
+lient.on('message', msg => {
+  if (msg.content === 'العراق') {      
+    msg.react("🇮🇶")
+    msg.channel.send("🇮🇶")
+  }
+});
 
 
 client.login(process.env.BOT_TOKEN);
