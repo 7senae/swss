@@ -1945,37 +1945,6 @@ client.on('message', async message => {
 
 
 
-function errormsg(message, err, cmd) {
-    message.channel.send(errmsg) 
-    client.channels.get("497591825792630786").send(`**:warning: Error**`, {embed: {
-    description: `\`\`\`${err}\`\`\` `,
-    fields: [
-        {
-        name: "**server**",
-        value: message.guild.name,
-        inline: true
-        }, 
-        {
-        name: "**user**",
-        value: message.author.username,
-        inline: true
-        }, 
-        {
-        name: "**command**",
-        value: cmd,
-        inline: true
-        }
-    ]}})
-    return; 
-}
-
-
-lient.on('message', msg => {
-  if (msg.content === 'العراق') {      
-    msg.react("🇮🇶")
-    msg.channel.send("🇮🇶")
-  }
-});
 
 
 client.login(process.env.BOT_TOKEN);
