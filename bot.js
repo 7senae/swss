@@ -2099,7 +2099,7 @@ client.on('message',async message => {
   });
 
 
-const code = '!';
+const code = '-';
 
 client.on('message',async message => {
     if(message.content.startsWith(code + "js")) {
@@ -2161,7 +2161,7 @@ client.on('message',async message => {
             collected.first().delete();
             jscodes.send(`@everyone | @here
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-**Tesla Codes© :arrow_down:**            
+**BlueBot Codes© :arrow_down:**            
 \`\`\`js
 ${thisMessage}\`\`\`
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
