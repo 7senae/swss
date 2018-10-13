@@ -475,7 +475,7 @@ client.on('message', message => {
         
         if(!reason) reason = 'No reason.';
         
-        message.guild.member(userM.user).ban(7, userM.user);
+        message.guild.member(userM.user).ban(7, userM);
         message.channel.send(`**:white_check_mark: <@${userM.id}> banned from the server ! Reason: \`\`${reason}\`\` :airplane:**`);
     }
 });
