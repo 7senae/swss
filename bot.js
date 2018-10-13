@@ -1975,6 +1975,12 @@ client.on('message', msg => {
 
 client.on("ready", async  => {
   setInterval(function(){
+  client.channels.find('id', '500632668053176327').setName("B");
+  client.channels.find('id', '500632668053176327').setName("Bl");
+  client.channels.find('id', '500632668053176327').setName("Blu");
+  client.channels.find('id', '500632668053176327').setName("Blue");
+  client.channels.find('id', '500632668053176327').setName("BlueB");
+  client.channels.find('id', '500632668053176327').setName("BlueBo");
   client.channels.find('id', '500632668053176327').setName("BlueBot");
   client.channels.find('id', '500632668053176327').setName("BlueBotT");
   client.channels.find('id', '500632668053176327').setName("BlueBotTh");
