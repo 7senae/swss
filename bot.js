@@ -1984,7 +1984,6 @@ client.on("ready", async  => {
   client.channels.find('id', '500632668053176327').setName("BlueBotTheBes");
   client.channels.find('id', '500632668053176327').setName("BlueBotTheBest");
   client.channels.find('id', '500632668053176327').setName("BlueBotTheBest");
-  client.channels.find('id', '500632668053176327').setName("BlueBotTheBest");
     }, 6000);
   });
 
