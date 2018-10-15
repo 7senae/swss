@@ -2159,8 +2159,6 @@ ${thisMessage}\`\`\`
 );
       })}});
 
-const Discord = require('discord.js');
-const fs = require('fs');
 const hero = new Discord.Client({disableEveryone: true, maxMessagesCache: 1});
 const config = { prefix: "$" };
 const tpoints = {};
