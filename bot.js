@@ -1971,27 +1971,6 @@ client.on('message', msg => {
 
 })
 
-
-
-client.on("ready", async  => {
-  setInterval(function(){
-  client.channels.find('id', '500632668053176327').setName("B");
-  client.channels.find('id', '500632668053176327').setName("Bl");
-  client.channels.find('id', '500632668053176327').setName("Blu");
-  client.channels.find('id', '500632668053176327').setName("Blue");
-  client.channels.find('id', '500632668053176327').setName("BlueB");
-  client.channels.find('id', '500632668053176327').setName("BlueBo");
-  client.channels.find('id', '500632668053176327').setName("BlueBot");
-  client.channels.find('id', '500632668053176327').setName("BlueBotT");
-  client.channels.find('id', '500632668053176327').setName("BlueBotTh");
-  client.channels.find('id', '500632668053176327').setName("BlueBotThe");
-  client.channels.find('id', '500632668053176327').setName("BlueBotTheB");
-  client.channels.find('id', '500632668053176327').setName("BlueBotTheBe");
-  client.channels.find('id', '500632668053176327').setName("BlueBotTheBes");
-  client.channels.find('id', '500632668053176327').setName("BlueBotTheBest");
-    }, 6000);
-  });
-
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "setRoom")) {
     if(message.author.bot) return;
