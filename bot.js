@@ -1572,7 +1572,7 @@ if(cmd === `${prefix}sug`) {
     .setColor(3447003)
     .setTitle(":bulb:  New Suggest :bulb: ")
     .setFooter(`Suggested By : ${message.author.tag}`);
-    .setFooter(`The Suggest : :arrow_forward: 
+    .setFooter(`The Suggest : :arrow_forward:`)
     .setDescription(`${suggestMessage}`)
     message.delete().catch(O_o=>{}) 
     let suggests = message.guild.channels.find(`name`, "suggest");
