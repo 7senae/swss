@@ -1559,79 +1559,25 @@ client.on('message',async message => {
   });
 
 
+client.on('message', message =>{
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(1);
+    let prefix = '-';//البرفكس
 
-client.on('message', message => {
-    var command = message.content.toLowerCase().split(" ")[0];
-    var args = message.content.split(' ').slice(1).join(' ');
-	var sugChannel = message.guild.channels.find(r => r.name === 'suggest');
-    var sender = message.author;
-	var prefix = '-';
-	
-    if(command == prefix + 'sug') {
-		if(message.author.bot) return;
-		if(message.channel.type === 'dm') return;
-		
-		if(!sugChannel) return message.channel.send(':no_entry: | I couldn\'t find the room! Please make room with name `suggest`');
-		if(!args) return message.channel.send(`**Useage:** ${prefix}sug <SUG>`);
-		if(args.length > 1500) return message.channel.send(':no_entry: | الاقتراح يجب ان يكون اقل من 1500 حرف');
-       
-        message.delete();
-        message.channel.send(':octagonal_sign: __هل أنت متأكد انك تريد ارسال اقتراحك؟__').then(msg => {
-            msg.react('✅').then(() => msg.react('❎'))
-           
-            let sugSure = new Discord.RichEmbed()
-            .setColor('RANDOM')
-            .setDescription(`**${args}**`)
-            .setTimestamp()
-            .setFooter(sender.tag, sender.avatarURL)
-           
-            message.channel.send(sugSure).then(msg1 => {
-               
-                let yes = (reaction, user) => reaction.emoji.name === '✅'  && user.id === sender.id;
-                let no = (reaction, user) => reaction.emoji.name === '❎' && user.id === sender.id;
-               
-                let send = msg.createReactionCollector(yes);
-                let dontSend = msg.createReactionCollector(no);
-               
-                send.on('collect', r => {
-                    msg.delete();
-                    msg1.delete();
-                    let sugMsg = new Discord.RichEmbed()
-                    .setTitle(':bell: New Suggestion! :bell:')
-                    .setColor('RANDOM')
-                    .setThumbnail(sender.avatarURL)
-                    .setDescription(`**\n:arrow_right: Sender:**\n<@${sender.id}>\n\n:pencil: **The Suggest:**\n${args}`)
-                    .setTimestamp()
-                    .setFooter(sender.tag, sender.avatarURL)
-                   
-                    sugChannel.send(sugMsg).then(msg => {
-                        msg.react('✅').then(() => msg.react('❎'));
-                    })
-                    message.channel.send(`:white_check_mark: | <@${sender.id}> The Suggestion was Successfully send to sugs room!`).then(msg => msg.delete(5000));
-                });
-                dontSend.on('collect', r => {
-                    msg.delete();
-                    msg1.delete();
-                    message.channel.send(`:x: | <@${sender.id}> The suggestion was Successfully canceld.`).then(msg => msg.delete(5000));
-                });
-            })
-        })
-    }
+if(cmd === `${prefix}sug`) {
+    var suggestMessage = message.content.substring(8)
+    let suggestEMBED = new Discord.RichEmbed()
+    .setColor(3447003)
+    .setTitle("اقتراح جديد || الاقتراح")
+    .setDescription(`**${suggestMessage}**`)
+    .setFooter(`Suggested By : ${message.author.tag}`);
+    message.delete().catch(O_o=>{}) 
+    let suggests = message.guild.channels.find(`name`, "suggest");
+    suggests.send(suggestEMBED);
+}
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
