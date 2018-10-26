@@ -1559,19 +1559,21 @@ client.on('message',async message => {
   });
 
 
+
 client.on('message', message =>{
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
-    let prefix = '-';//البرفكس
+    let prefix = '-';
 
 if(cmd === `${prefix}sug`) {
     var suggestMessage = message.content.substring(8)
     let suggestEMBED = new Discord.RichEmbed()
     .setColor(3447003)
-    .setTitle("اقتراح جديد || الاقتراح")
-    .setDescription(`**${suggestMessage}**`)
+    .setTitle(":bulb:  New Suggest :bulb: ")
     .setFooter(`Suggested By : ${message.author.tag}`);
+    .setFooter(`The Suggest : :arrow_forward: 
+    .setDescription(`${suggestMessage}`)
     message.delete().catch(O_o=>{}) 
     let suggests = message.guild.channels.find(`name`, "suggest");
     suggests.send(suggestEMBED);
