@@ -1560,26 +1560,23 @@ client.on('message',async message => {
 
 
 
-client.on('message', message =>{
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-    let prefix = '-';
+client.on('message', message => {
+    let args = message.content.split(' ').slice(1);
+    if(message.content.split(' ')[0] == '-sug') 
+    var embed = new Discord.RichEmbed()
 
-if(cmd === `${prefix}sug`) {
-    var suggestMessage = message.content.substring(8)
-    let suggestEMBED = new Discord.RichEmbed()
-    .setColor(3447003)
-    .setTitle(":bulb:  New Suggest :bulb: ")
-    .setFooter(`Suggested By : ${message.author.tag}`)
-    .setFooter(`The Suggest : :arrow_forward:`);
-    .setDescription(`${suggestMessage}`)
-    message.delete().catch(O_o=>{}) 
+    .setColor('RANDOM')
+    .addField('New Suggestion',`${args}`,true)
+    .setTimestamp()
+
     let suggests = message.guild.channels.find(`name`, "suggest");
-    suggests.send(suggestEMBED);
-}
+    suggests.send(embed)
+    .then(msg => {
+        msg.react('✅')
+        msg.react('❌')
+    })    
 
-});
+}); 
 
 
 
