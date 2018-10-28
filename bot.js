@@ -1560,27 +1560,6 @@ client.on('message',async message => {
 
 
 
-client.on('message', message => {
-    let args = message.content.split(' ').slice(1);
-    if(message.content.split(' ')[0] == '-sug') 
-    var embed = new Discord.RichEmbed()
-
-    .setColor('RANDOM')
-    .addField('New Suggestion',`${args}`,true)
-    .setTimestamp()
-
-    let suggests = message.guild.channels.find(`name`, "suggest");
-    suggests.send(embed)
-    .then(msg => {
-        msg.react('✅')
-        msg.react('❌')
-    })    
-
-}); 
-
-
-
-
 
 client.on('message', message => {
  const args = message.content.slice(prefix.length).trim().split(/ +/g);
