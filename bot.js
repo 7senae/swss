@@ -2145,13 +2145,18 @@ hero.on('voiceStateUpdate', (u, member) => {
 
 
 
+
+
+
+
+
 client.on('message', function(message) {
     if (message.channel.type === "dm") {
         if (message.author.id === client.user.id) return;
         var BlueCodes = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTimestamp()
-        .setTitle('``! لقد تلقيت رساله جديدة في الخاص !``')
+        .setTitle('``:mailbox_with_mail: New Message in DM :mailbox_with_mail: ``')
         .setThumbnail(`${message.author.avatarURL}`)
         .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
         .setFooter(`From ${message.author.tag} (${message.author.presence.status.toUpperCase()})`)
