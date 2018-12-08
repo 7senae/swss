@@ -3,7 +3,6 @@ const Util = require('discord.js');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
-const moment = require('moment');
 const jimp = require('jimp');
 const Canvas = require('canvas');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
