@@ -2016,7 +2016,7 @@ client.on('message',async message => {
 const reply = JSON.parse(fs.readFileSync('./replys.json' , 'utf8'));
 client.on('message', async message => {
     let messageArray = message.content.split(" ");
-   if(message.content.startsWith(prefix + "setReply")) {
+   if(message.content.startsWith(prefix + "setreply")) {
     let filter = m => m.author.id === message.author.id;
     let thisMessage;
     let thisFalse;
@@ -2026,7 +2026,7 @@ client.on('message', async message => {
        message.delete(4500);
     });
     
-    message.channel.send(':pencil: **| من فضلك اكتب الرساله الان... :pencil2: **').then(msg => {
+    message.channel.send('**:pencil: Write Message |اكتب رسالة :pencil2: **').then(msg => {
 
         message.channel.awaitMessages(filter, {
           max: 1,
@@ -2037,7 +2037,7 @@ client.on('message', async message => {
             collected.first().delete();
             thisMessage = collected.first().content;
             let boi;
-            msg.edit(':scroll: **| من فضلك اكتب الرد الان... :pencil2: **').then(msg => {
+            msg.edit('**:scroll: Write Reply |اكتب الرد :pencil2: **').then(msg => {
       
                 message.channel.awaitMessages(filter, {
                   max: 1,
@@ -2047,7 +2047,7 @@ client.on('message', async message => {
                 .then(collected => {
                     collected.first().delete();
                     boi = collected.first().content;
-                    msg.edit('✅ **| تم الاعداد بنجاح...  **').then(msg => {
+                    msg.edit('**✅Done | تم ✅**').then(msg => {
         
                       message.channel.awaitMessages(filter, {
                         max: 1,
@@ -2160,15 +2160,15 @@ ${thisMessage}\`\`\`
       );
     });
 }
-);
-      })}});
+).
+ .
 
 
 
 
 
-client.on('message', function(message) {
-    if (message.channel.type === "dm") {
+c. {
+ . {
         if (message.author.id === client.user.id) return;
         var BlueCodes = new Discord.RichEmbed()
         .setColor('RANDOM')
