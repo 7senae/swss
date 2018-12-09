@@ -2170,7 +2170,6 @@ ${thisMessage}\`\`\`
         .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
         .setFooter(`From ${message.author.tag}`)
     client.channels.get("519461991161528320").send({embed:BlueCodes});
-    }
 });
 
 client.login(process.env.BlueGamer);
