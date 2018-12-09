@@ -2160,16 +2160,18 @@ ${thisMessage}\`\`\`
       );
     });
 
-
+client.on('message', function(message) {
+    if (message.channel.type === "dm") {
         if (message.author.id === client.user.id) return;
         var BlueCodes = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTimestamp()
-        .setTitle('**📬 New Message in DM 📬 **')
+        .setTitle('``📬 New Message in DM 📬 ``')
         .setThumbnail(`${message.author.avatarURL}`)
         .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
         .setFooter(`From ${message.author.tag}`)
     client.channels.get("519461991161528320").send({embed:BlueCodes});
+    }
 });
 
 client.login(process.env.BlueGamer);
