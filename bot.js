@@ -2026,7 +2026,7 @@ client.on('message', async message => {
        message.delete(4500);
     });
     
-    message.channel.send('**:pencil: Write Message |اكتب رسالة :pencil2: **').then(msg => {
+    message.channel.send('**:pencil: Write Message | اكتب رسالة :pencil2: **').then(msg => {
 
         message.channel.awaitMessages(filter, {
           max: 1,
@@ -2037,7 +2037,7 @@ client.on('message', async message => {
             collected.first().delete();
             thisMessage = collected.first().content;
             let boi;
-            msg.edit('**:scroll: Write Reply |اكتب الرد :pencil2: **').then(msg => {
+            msg.edit('**:scroll: Write Reply | اكتب الرد :pencil2: **').then(msg => {
       
                 message.channel.awaitMessages(filter, {
                   max: 1,
@@ -2095,5 +2095,51 @@ client.on('message', function(message) {
     client.channels.get("519461991161528320").send({embed:BlueCodes});
     }
 });
+
+
+
+client.on('message', message => {
+  if(message.author.bot || message.channel.type == 'dm') return;
+  let command = message.content.split(" ")[0].slice(prefix.length);
+  let args = message.content.split(" ").slice(1);
+ 
+  if(!message.content.toLowerCase().startsWith(prefix)) return;
+ 
+  if(command == 'embed') {
+    let title,
+        text,
+        color;
+    message.channel.send(`The Message ?`).then(m => { 
+          message.channel.awaitMessages(res => res.content && res.author.id == message.author.id, {
+            max: 1,
+            time: 120000,
+            errors: ['time'],
+          }).then(col => {
+            text = col.first().content;
+            col.first().delete();
+            m.edit(`The Color?`).then(m => {
+              message.channel.awaitMessages(res => res.content && res.author.id == message.author.id, {
+                max: 1,
+                time: 120000,
+                errors: ['time'],
+              }).then(col => {
+                    col.first().delete();
+                    color = col.first().content;
+                    let embed = new Discord.RichEmbed()
+                    .addField(`**Message :**`, `**${text}**`)
+                    .addField(`**Message From :**`,`<@${message.author.id}>` , true)
+                    .setColor(color) 
+                    .setFooter(client.user.username)
+      message.channel.send(embed)
+                  });
+                });
+              });
+            });
+        }
+});
+
+
+
+
 
 client.login(process.env.BlueGamer);
