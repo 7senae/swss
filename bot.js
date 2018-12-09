@@ -14,7 +14,7 @@ const prefix = "-";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`-help | BlueBot 💙✨ `,"https://www.twitch.tv/S-F")
+client.user.setGame(`-help | BlueBot 💙✨ `,"https://www.twitch.tv/BlueGamer")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -2159,16 +2159,8 @@ ${thisMessage}\`\`\`
     }
       );
     });
-}
-).
- .
 
 
-
-
-
-c. {
- . {
         if (message.author.id === client.user.id) return;
         var BlueCodes = new Discord.RichEmbed()
         .setColor('RANDOM')
