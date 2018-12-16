@@ -2171,18 +2171,4 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
-client.on('message', message => {
-var [user] = ${member}
-            if(!message.channel.guild) return;
-let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('-cbc')){
- if(!message.author.id === '') return;
-  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
-client.users.forEach(m =>{ [user]
-m.sendMessage(args)
-})
-}
-});
-
 client.login(process.env.BlueGamer);
