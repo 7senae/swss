@@ -2168,7 +2168,19 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 });
 
+client.on("message", msg => {
+let myid = '349095859859881984'
+if(msg.content === `<@${myid}>`){
+bot.users.get(ownerid).send(`
+ **:newspaper:  في واحد منشنك :newspaper: 
 
+:arrow_down: بسيرفر: :arrow_down:
+\`${msg.guild.name}\`
+ 
+:arrow_down: By: :arrow_heading_down: **
+***${msg.author}***`);
+}
+})
 
 
 client.login(process.env.BlueGamer);
