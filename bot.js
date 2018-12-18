@@ -2172,7 +2172,6 @@ client.on("message", msg => {
 let myid = '349095859859881984'
 if(msg.content === `<@${myid}>`){
 client.users.get(myid).send(`
-${member}
  **:newspaper:  في واحد منشنك :newspaper: / :newspaper: Someone mention You :newspaper:
 
 :arrow_down: بسيرفر: :arrow_down: / :arrow_down: In server :arrow_down: 
