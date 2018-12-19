@@ -2088,7 +2088,7 @@ client.on('message', function(message) {
         var BlueCodes = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTimestamp()
-        .setTitle('``📬 New Message in DM 📬``')
+        .setTitle(':mailbox_with_mail:  New Message in DM 📬')
         .setThumbnail(`${message.author.avatarURL}`)
         .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
         .setFooter(`From ${message.author.tag}`)
