@@ -2803,7 +2803,7 @@ client.on('guildMemberAdd', member => {
         .setThumbnail(m.avatarURL)
         .setAuthor(m.username,m.avatarURL)
         .addField('Joined Discord From :',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)            
-        .setDescription('welcome to ${guild.name}')
+        .setDescription('welcome to ${member.guild.name}')
          .setFooter(`${m.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
      welcomer.send({embed:yumz});          
          
