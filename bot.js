@@ -41,7 +41,7 @@ client.user.setGame(`$help | FoxGeneral 💙✨ `,"https://www.twitch.tv/S-F")
 
 
 client.on("message", message => {
- if (message.content === "$help-public") {
+ if (message.content === "$help") {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setDescription('👑أوامر الأعضاء👑')
@@ -62,6 +62,8 @@ client.on("message", message => {
           .addField('❖-|$sug', `🔱لاقتراح شئ و لازم يكون فيه روم اسمه suggestions👑`)
           .addField('❖-|$BotTime', `🕞عشان تشوف البوت شغال من متى🅱`)
           .addField('❖-|$info', `🚩عشان تعرف معلومات البوت🚩`)
+          .addField('❖-|$new', `🚩عشان تفتح تكت🚩`)
+          .addField('❖-|$new-', `🚩عشان تقفل تكت🚩`)
   message.author.send({embed});
       message.channel.send(":white_check_mark: | Check Your DM تم الأرسال بلخاص")
  }
@@ -490,6 +492,232 @@ client.on('message', message => {
 
 
 
+var fs = require("fs");
+let profile = JSON.parse(fs.readFileSync("./profile.json", "utf8"))
+client.on("message", message => {
+  if (message.author.bot) return;
+ if(!message.channel.guild)return;
+  if (!profile[message.author.id]) profile[message.author.id] = {
+    tite: 'HypeLC User',
+    rep: 0,
+   reps: 'NOT YET',
+   lastDaily:'Not Collected',
+    level: 0,
+    points: 0,
+    credits: 1,
+  };
+fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
+if (err) console.error(err);
+})
+});
+client.on("message", (message) => {
+  let men = message.mentions.users.first()
+  if (message.author.bot) return;
+    if (message.author.id === client.user.id) return;
+    if(!message.channel.guild) return;
+if (message.content.startsWith(prefix + 'credit')) {
+  if(men) {
+  if (!profile[men.id]) profile[men.id] = {
+   lastDaily:'Not Collected',
+   credits: 1,
+ };
+  }
+  if(men) {
+message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${profile[men.id].credits}$` + "`.**")
+} else {
+ message.channel.send(`** ${message.author.username}, your :credit_card: balance` + " is `" + `${profile[message.author.id].credits}$` + "`.**")
+}
+}
+if(message.content.startsWith(prefix + "daily")) {
+
+
+  if(profile[message.author.id].lastDaily != moment().format('day')) {
+   profile[message.author.id].lastDaily = moment().format('day')
+   profile[message.author.id].credits += 310
+    message.channel.send(`:atm: |**${message.author.username} you collect your \`310\` :yen: daily credits!**`)
+} else {
+    message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
+}
+}
+let cont = message.content.slice(prefix.length).split(" ");
+let args = cont.slice(2);
+let sender = message.author
+if(message.content.startsWith(prefix + 'trans')) {
+if (!args[0]) {message.channel.send(`**Usage: ${prefix}trans @someone amount**`); 
+         return;
+           }
+        // We should also make sure that args[0] is a number
+        if (isNaN(args[0])) {
+            message.channel.send(`**Usage: ${prefix}trans @someone number**`);
+            return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
+             }
+             if(profile[message.author.id].credits < args[0]) return message.channel.send("**Your Credits is not enough  that**")
+if(args[0].startsWith("-")) return  message.channel.send('**!! I Cant Do it**');
+				 let defineduser = '';
+            let firstMentioned = message.mentions.users.first();
+            defineduser = (firstMentioned)
+            if (!defineduser) return message.channel.send(`**Usage: ${prefix}trans @someone number**`);
+            if(defineduser.id === message.author.id) return message.channel.send("***Transfering to your self hah ?!***")
+            var mentionned = message.mentions.users.first();
+if (!profile[sender.id]) profile[sender.id] = {}
+if (!profile[sender.id].credits) profile[sender.id].credits = 310;
+fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
+if (err) console.error(err);
+})
+var x = ['5587' ,' 9978' , '3785' , '7734' , '9864' , '7681' , '3758' , '7834' , '3489' , '1382' , '7389' , '8762' , '0889' , '0388' , '3316' , '0976' , '8603' , '1842' , '4565' , '9524' , '9524' , '0964' , '5930' , '5678' , '9567' , '6099' , '7058' , '0001' , '1324' , '9834' , '7668' , '0378' , '7055' , '9733' , '9876' , '9846' , '9685' , '8574' , '8975' , '9845' , '9862' , '0069' , '0807' , '0673' , '0813' , '1235' , '6879'];
+var x2 = ['5587' ,' 9978' , '3785' , '7734' , '9864' , '7681' , '3758' , '7834' , '3489' , '1382' , '7389' , '8762' , '0889' , '0388' , '3316' , '0976' , '8603' , '1842' , '4565' , '9524' , '9524' , '0964' , '5930' , '5678' , '9567' , '6099' , '7058' , '0001' , '1324' , '9834' , '7668' , '0378' , '7055' , '9733' , '9876' , '9846' , '9685' , '8574' , '8975' , '9845' , '9862' , '0069' , '0807' , '0673' , '0813' , '1235' , '6879'];
+        var x3 = Math.floor(Math.random()*x.length)
+        message.channel.send(` \`${args}\`** : الملبغ**  \n \`${x[x3]}\` ** : اكتب الرقم التالي حتي تتم عملية التحويل **`).then(msg1=> { 
+        var r = message.channel.awaitMessages(msg => msg.content == x2[x3], { maxMatches : 1, time : 60000, errors : ['time'] })
+        r.catch(() => {
+            message.delete()
+            r.delete()
+            msg.delete()
+            message.channel.sendEmbed(embed)
+        })
+        r.then(s=> {
+      var mando = message.mentions.users.id;
+      if  (!profile[defineduser.id]) profile[defineduser.id] = {}
+      if (!profile[defineduser.id].credits) profile[defineduser.id].credits = 200;
+      profile[defineduser.id].credits += (+args[0]);
+      profile[sender.id].credits += (-args[0]);
+      let mariam = message.author.username
+message.channel.send(`**:moneybag: | ${message.author.username}, has transferrerd ` + "`" + args[0] + "$` to " + `<@${defineduser.id}>**`)
+mentionned.send(`:credit_card: | Transfer Receipt \`\`\`\`You have received ${args[0]} from user ${message.author.username} (ID: ${message.author.id})\`\`\`\``);
+               message.channel.sendEmbed(embed)
+        })
+        })
+}
+});
+
+
+client.on('message',async message => {
+  var room;
+  var title;
+  var duration;
+  var gMembers;
+  var filter = m => m.author.id === message.author.id;
+  if(message.author.bot) return;
+  if(message.content.startsWith(prefix + "giveaway")) {
+     //return message.channel.send(':heavy_multiplication_x:| **هذا الامر معطل حاليا.. ``حاول في وقت لاحق``**');
+    if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
+    message.channel.send(`:eight_pointed_black_star:| **منشن الروم الذي تريد به القيف اواي**`).then(msgg => {
+      message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 20000,
+        errors: ['time']
+      }).then(collected => {
+        let room = message.guild.channels.find('name', collected.first().content);
+        if(!room) return message.channel.send(':heavy_multiplication_x:| **لم اقدر على ايجاد الروم المطلوب**');
+        room = collected.first().content;
+        collected.first().delete();
+        msgg.edit(':eight_pointed_black_star:| **اكتب مدة القيف اواي**').then(msg => {
+          message.channel.awaitMessages(filter, {
+            max: 1,
+            time: 20000,
+            errors: ['time']
+          }).then(collected => {
+            if(isNaN(collected.first().content)) return message.channel.send(':heavy_multiplication_x:| **يجب عليك ان تحدد وقت زمني صحيح.. ``يجب عليك اعادة كتابة الامر``**');
+            duration = collected.first().content * 60000;
+            collected.first().delete();
+            msgg.edit(':eight_pointed_black_star:| **واخيرا اكتب على ماذا تريد القيف اواي**').then(msg => {
+              message.channel.awaitMessages(filter, {
+                max: 1,
+                time: 20000,
+                errors: ['time']
+              }).then(collected => {
+                title = collected.first().content;
+                collected.first().delete();
+                try {
+                  let giveEmbed = new Discord.RichEmbed()
+                  .setAuthor(message.guild.name, message.guild.iconURL)
+                  .setTitle(title)
+                  .setDescription(`المدة : ${duration / 60000} دقائق`)
+                  .setFooter(message.author.username, message.author.avatarURL);
+                  message.guild.channels.find('name', room).send(giveEmbed).then(m => {
+                     let re = m.react('🎉');
+                     setTimeout(() => {
+                       let users = m.reactions.get("🎉").users;
+                       let list = users.array().filter(u => u.id !== m.author.id);
+                       let gFilter = list[Math.floor(Math.random() * list.length) + 0];
+                         if(users.size === 1) gFilter = '**لم يتم التحديد**';
+                       let endEmbed = new Discord.RichEmbed()
+                       .setAuthor(message.author.username, message.author.avatarURL)
+                       .setTitle(title)
+                       .addField('انتهى القيف اواي !',`الفائز هو : ${gFilter}`)
+                       .setFooter(message.guild.name, message.guild.iconURL);
+                       m.edit(endEmbed);
+                     },duration);
+                   });
+                  msgg.edit(`:heavy_check_mark:| **تم اعداد القيف اواي**`);
+                } catch(e) {
+                  msgg.edit(`:heavy_multiplication_x:| **لم اقدر على اعداد القيف اواي بسبب نقص الخصائص**`);
+                  console.log(e);
+                }
+              });
+            });
+          });
+        });
+      });
+    });
+  }
+});
+
+client.on("message", (message) => {
+    /// ALPHA CODES
+   if (message.content.startsWith("$new")) {     /// ALPHA CODES
+        const reason = message.content.split(" ").slice(1).join(" ");     /// ALPHA CODES
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+        if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
+        message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
+            let role = message.guild.roles.find("name", "Support Team");
+            let role2 = message.guild.roles.find("name", "@everyone");
+            c.overwritePermissions(role, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });    /// ALPHA CODES
+            c.overwritePermissions(role2, {
+                SEND_MESSAGES: false,
+                READ_MESSAGES: false
+            });
+            c.overwritePermissions(message.author, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });
+            message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
+            const embed = new Discord.RichEmbed()
+                .setColor(0xCF40FA)
+                .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Staff** will be here soon to help.`)
+                .setTimestamp();
+            c.send({
+                embed: embed
+            });
+        }).catch(console.error);
+    }
+ 
+ 
+  if (message.content.startsWith("$new-")) {
+        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
+ 
+       message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`#confirm\`. This will time out in 10 seconds and be cancelled.`)
+           .then((m) => {
+               message.channel.awaitMessages(response => response.content === '-confirm', {
+                       max: 1,
+                       time: 10000,
+                       errors: ['time'],
+                   })    /// ALPHA CODES
+                   .then((collected) => {
+                       message.channel.delete();
+                   })    /// ALPHA CODES
+                   .catch(() => {
+                       m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+                           m2.delete();
+                       }, 3000);
+                   });
+           });
+   }
+ 
+});
 
 
 
