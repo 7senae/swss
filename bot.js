@@ -1010,7 +1010,6 @@ mentionned.send(`:credit_card: | Transfer Receipt \`\`\`\`You have received ${ar
 });
 
 
-var prefix = "*"
 const moment = require('moment');
 client.on('message',async message => {
   var time = moment().format('Do MMMM YYYY , hh:mm');
