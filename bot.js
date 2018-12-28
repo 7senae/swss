@@ -333,11 +333,19 @@ client.on("message", message => {
  
 })
  
+check your DMs! :mailbox_with_mail: 
+client.on('message', msg => {
+  if (msg.content === '-help') {
+    msg.reply('check your DMs! :mailbox_with_mail:');
+  }
+});
+
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) { 
     let pages = [`
 :earth_africa: The Public Commands :earth_africa: 
+
 ❖ -id  ➾ your id
 ❖ -setreply ➾ [Put the message] , [And Put reply]
 ❖ -embed ➾ [Write Message] , [The color (CAPITAL)]
@@ -360,10 +368,12 @@ if (message.content.startsWith(prefix + 'help')) {
 ❖ -giveaway [<room name> <time in days , hours , min> <giveaway name> ➾ make giveaway! ]
 ❖ -BotTime ➾ [to see time bot is online for]
 ❖ -ticket ➾ [to make ticket / or -close to close it ]
+
 Click On ▶ To Go Administor Side
    `
 ,`
 :closed_lock_with_key: Administor Coomands:closed_lock_with_key: 
+
 ❖ -mute <user> <time> <reason> ➾ mute from server
 ❖ -unmute <user> ➾ unmute from server
 ❖ -kick <user> <reason> ➾ kick from server
@@ -395,6 +405,8 @@ Server support: https://discord.gg/p4xQ6jv
 bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot
 ==================================================================
 By: k3o_0#9431**
+
+Click On ◀️ To Go To Administor Coomands
    `]
     let page = 1;
 
