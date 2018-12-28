@@ -332,52 +332,13 @@ client.on("message", message => {
 };
  
 })
-
-
-
-
+ 
 
 client.on('message', message => {
-    if (message.author.bot) return;
-     if (message.content === prefix + "help") {
-message.reply('**check your DMs! :mailbox_with_mail: **')
-	
-		 
- message.author.sendMessage(`
-**__BlueBot__** **By: k3o_0#9431
-╭━━╮╭╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮
-┃╭╮┃┃┃╱╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮
-┃╰╯╰┫┃╭╮╭┳━━┫╰╯╰┳━┻╮╭╯
-┃╭━╮┃┃┃┃┃┃┃━┫╭━╮┃╭╮┃┃
-┃╰━╯┃╰┫╰╯┃┃━┫╰━╯┃╰╯┃╰╮
-╰━━━┻━┻━━┻━━┻━━━┻━━┻━╯
-╔[❖════════════════════════❖]╗
-           Prefix = [-]
-╚[❖════════════════════════❖]╝
-
-╔[❖════════════════════════❖]╗
-      Admin Room Codmmands
-╚[❖════════════════════════❖]╝
-❖ [make room with name <welcome> ➾ for join-leave log]
-❖ [make room his name 'log']
-❖ -setRoom [make memberCount , Date , Time , Voice online]
-
-╔[❖════════════════════════❖]╗
-        Admin Commands
-╚[❖════════════════════════❖]╝
-❖ -mute <user> <time> <reason> ➾ mute from server
-❖ -unmute <user> ➾ unmute from server
-❖ -kick <user> <reason> ➾ kick from server
-❖ -ban <mention> <reason> ➾ ban member from server
-❖ -unban <id> ➾ unban from server
-❖ -autoC <role name> than react any message ➾ to make auto role with react
-❖ -bc <message> ➾ message all members in server
-❖ -clear <number> ➾ clear chat
-❖ -openc ➾ to open chat
-❖ -colsec ➾ to close chat
-╔[❖════════════════════════❖]╗
-         General  Commands
-╚[❖════════════════════════❖]╝
+if (message.content.startsWith(prefix + 'help')) { 
+    let pages = [`
+:earth_africa: The Public Commands :earth_africa: 
+❖ -id  ➾ your id
 ❖ -setreply ➾ [Put the message] , [And Put reply]
 ❖ -embed ➾ [Write Message] , [The color (CAPITAL)]
 ❖ -id ➾ [your id]
@@ -390,78 +351,50 @@ message.reply('**check your DMs! :mailbox_with_mail: **')
 ❖ -info ➾ [user & bot informations]
 ❖ -bot ➾ [bot informations]
 ❖ -server ➾  [server informations]
-❖ -member ➾ members info
-❖ -own ➾ bot owner
-❖ -invite ➾ bot invite link
-❖ -support ➾ server support link
-❖ -msg ➾  for send msg for someone by bot
-❖ -send ➾  to send message with react in it to channel 
-❖ -giveaway <room name> <time in min> <giveaway name> ➾ make giveaway! 
-❖ -BotTime ➾ to see time bot is online for
-❖ -ticket ➾ to make ticket / or -close to close it 
- 
+❖ -member ➾ [members info]
+❖ -own ➾ [bot owner]
+❖ -invite ➾ [bot invite link]
+❖ -support ➾ [server support link]
+❖ -msg ➾  [for send msg for someone by bot]
+❖ -send ➾  [to send message with react in it to channel]
+❖ -giveaway [<room name> <time in days , hours , min> <giveaway name> ➾ make giveaway! ]
+❖ -BotTime ➾ [to see time bot is online for]
+❖ -ticket ➾ [to make ticket / or -close to close it ]
+Click On ▶ To Go Administor Side
+   `
+,`
+:closed_lock_with_key: Administor Coomands:closed_lock_with_key: 
+❖ -mute <user> <time> <reason> ➾ mute from server
+❖ -unmute <user> ➾ unmute from server
+❖ -kick <user> <reason> ➾ kick from server
+❖ -ban <mention> <reason> ➾ ban member from server
+❖ -unban <id> ➾ unban from server
+❖ -autoC <role name> than react any message ➾ to make auto role with react
+❖ -bc <message> ➾ message all members in server [without embed]
+❖ -clear <number> ➾ clear chat
+❖ -openc ➾ to open chat
+❖ -colsec ➾ to close chat
+-----------------
+❖ [make room with name <welcome> ➾ for join-leave log]
+❖ [make room his name 'log']
+❖ -setRoom [make memberCount , Date , Time , Voice online]
+
+Click On ▶ To Go To Bot Info
+Click On ◀️ To Go To General Commands
+   `,`
+**__BlueBot__** **
+╭━━╮╭╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮
+┃╭╮┃┃┃╱╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮
+┃╰╯╰┫┃╭╮╭┳━━┫╰╯╰┳━┻╮╭╯
+┃╭━╮┃┃┃┃┃┃┃━┫╭━╮┃╭╮┃┃
+┃╰━╯┃╰┫╰╯┃┃━┫╰━╯┃╰╯┃╰╮
+╰━━━┻━┻━━┻━━┻━━━┻━━┻━╯
 ==================================================================
 Server support: https://discord.gg/p4xQ6jv
 ==================================================================
 bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot
 ==================================================================
-**`);
-
-    }
-});  
- 
-
-client.on('message', message => {
-if (message.content.startsWith(prefix + 'PHelp')) { 
-    let pages = [`
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-:earth_africa: The Public Commands :earth_africa: 
-1༺༻  -id  | Shows User ID༺༻
-2༺༻  $info | Shows User Info༺༻
-3༺༻  $server | Shows Server Info༺༻
-4༺༻  $ping | Shows Bot Ping༺༻
-5༺༻  $uptime | Shows Bot Time༺༻
-6༺༻ $invite | Shows Bot Invite Link༺༻
-7༺༻  $patato | Shows Bot Info༺༻
-8༺༻  $avatar | Shows User Avatar༺༻
-9༺༻ $savatar | Shows Server Avatar༺༻
-10༺༻  $mcskin  | Shows Minecraft Players Skin༺༻
-11༺༻  $say  | Repeat What Your Saying༺༻
-12༺༻  $makerole  | Make Server Roles༺༻
-13༺༻  $makeroom  | Make Server Roles༺༻
-14༺༻  $gif  | Gives You Gif ༺༻
-15༺༻  $moveall  | Move All Members To Your Channel༺༻
-16༺༻  $nick  | Nick Members༺༻
-17༺༻  $hack  | Hack Game༺༻
-18༺༻  $type  | Shows Bot is Typeing༺༻
-19༺༻  $stype  | Stops The Bot From Typeing༺༻
-20༺༻  $tag  | Give You Custom Words༺༻
-21༺༻  $redo  | Redoing Whats You Saying༺༻
-22༺༻  $2mv  | Makeing Channel For 2m༺༻
-23༺༻  $em  | Makeing Your Words In Embed༺༻
-24༺༻  $credits  | Shows Your Credits༺༻
-25༺༻  $daily  | You Can Get 250 Credits Everyday༺༻
-26༺༻  $rep  | Gives to the user REP༺༻
-27༺༻  $profile  | Shows User Profile༺༻
-28༺༻  $title  | Shows User title༺༻
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-Click On ▶ To Go Administor Side
-   `
-,`
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-:closed_lock_with_key: Administor Coomands:closed_lock_with_key: 
-1༺༻  $clear | Clear The Chat༺༻
-2༺༻  $bc | Msg Everyone In The Server༺༻
-3༺༻  $kick | Kick With Reson༺༻
-4༺༻  $ban | Ban With Reason༺༻
-5༺༻ Make Room Called log For Logs༺༻
-5༺༻ Make Room Called report For reports༺༻
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-Click On ▶ To Go To Bot Info
-   `,`
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-1༺༻  There is Commands Just For NotGucci | Bot By:NotGucci༺༻
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
+By: k3o_0#9431**
    `]
     let page = 1;
 
@@ -503,107 +436,6 @@ Click On ▶ To Go To Bot Info
     })
     }
 }); 
-
-
-client.on('message', message => {
-if (message.content.startsWith(prefix + 'Help')) { /// And This is The Channel One Send The Help In Channel // Code By NotGucci
-    let pages = [`
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-:earth_africa: The Public Commands :earth_africa: 
-1༺༻  $id  | Shows User ID༺༻
-2༺༻  $info | Shows User Info༺༻
-3༺༻  $server | Shows Server Info༺༻
-4༺༻  $ping | Shows Bot Ping༺༻
-5༺༻  $uptime | Shows Bot Time༺༻
-6༺༻ $invite | Shows Bot Invite Link༺༻
-7༺༻  $patato | Shows Bot Info༺༻
-8༺༻  $avatar | Shows User Avatar༺༻
-9༺༻ $savatar | Shows Server Avatar༺༻
-10༺༻  $mcskin  | Shows Minecraft Players Skin༺༻
-11༺༻  $say  | Repeat What Your Saying༺༻
-12༺༻  $makerole  | Make Server Roles༺༻
-13༺༻  $makeroom  | Make Server Roles༺༻
-14༺༻  $gif  | Gives You Gif ༺༻
-15༺༻  $moveall  | Move All Members To Your Channel༺༻
-16༺༻  $nick  | Nick Members༺༻
-17༺༻  $hack  | Hack Game༺༻
-18༺༻  $type  | Shows Bot is Typeing༺༻
-19༺༻  $stype  | Stops The Bot From Typeing༺༻
-20༺༻  $tag  | Give You Custom Words༺༻
-21༺༻  $redo  | Redoing Whats You Saying༺༻
-22༺༻  $2mv  | Makeing Channel For 2m༺༻
-23༺༻  $em  | Makeing Your Words In Embed༺༻
-24༺༻  $credits  | Shows Your Credits༺༻
-25༺༻  $daily  | You Can Get 250 Credits Everyday༺༻
-26༺༻  $rep  | Gives to the user REP༺༻
-27༺༻  $profile  | Shows User Profile༺༻
-28༺༻  $title  | Shows User title༺༻
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-Click On ▶ To Go Administor Side
-   `
-,`
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-:closed_lock_with_key: Administor Coomands:closed_lock_with_key: 
-1༺༻  $clear | Clear The Chat༺༻
-2༺༻  $bc | Msg Everyone In The Server༺༻
-3༺༻  $kick | Kick With Reson༺༻
-4༺༻  $ban | Ban With Reason༺༻
-5༺༻ Make Room Called log For Logs༺༻
-5༺༻ Make Room Called report For reports༺༻
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-Click On ▶ To Go To Bot Info
-   `,`
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-1༺༻  There is Commands Just For NotGucci | Bot By:NotGucci༺༻
-༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻༺▇༻
-   `]
- let page = 1;
-
-    let embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setFooter(`Page ${page} of ${pages.length}`)
-    .setDescription(pages[page-1])
-
-    message.channel.sendEmbed(embed).then(msg => {
-
-        msg.react('◀').then( r => {
-            msg.react('▶')
-
-           setTimeout(() => {
-        msg.delete
-    }, 60 * 1000)
-
-        const backwardsFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
-        const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
-
-
-        const backwards = msg.createReactionCollector(backwardsFilter, { time: 2000000});
-        const forwards = msg.createReactionCollector(forwardsFilter, { time: 2000000});
-
-
-
-        backwards.on('collect', r => {
-            if (page === 1) return;
-            page--;
-            embed.setDescription(pages[page-1]);
-            embed.setFooter(`Page ${page} of ${pages.length}`);
-            msg.edit(embed)
-        })
-        forwards.on('collect', r => {
-            if (page === pages.length) return;
-            page++;
-            embed.setDescription(pages[page-1]);
-            embed.setFooter(`Page ${page} of ${pages.length}`);
-            msg.edit(embed)
-        })
-        })
-    })
-    }
-}); 
-
-
-
-
 
 
 
