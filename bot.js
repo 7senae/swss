@@ -184,57 +184,19 @@ client.on('message', message => {
 });
 
 
+client.on("message", message => {
 
-
-
-
-client.on('message', message => {
-              if(!message.channel.type === 'dm') return;
-    if(message.content.startsWith(prefix + "bc")) {
-    if(message.author.bot) return;
-    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-    let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-    let copy = "BlueBot";
-    let request = `Requested By ${message.author.username}`;
-    if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
-    msg.react('✅')
-    .then(() => msg.react('❌'))
-    .then(() =>msg.react('✅'))
-    
-    let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-    let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-          let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-    let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
-    reaction1.on("collect", r => {
-    message.channel.send(`☑ | Done ... The Broadcast Message Has Been Sent For ${message.guild.members.size} Members`).then(m => m.delete(5000));
-    message.guild.members.forEach(m => {
-    var bc = new
-       Discord.RichEmbed()
-       .setColor('RANDOM')
-       .addField('السيرفر', message.guild.name)
-       .addField('المرسل ', message.author.username)
-       .addField('الرساله', args)
-       .setThumbnail(message.author.avatarURL)
-       .setFooter(copy, client.user.avatarURL)
-       .addField('الرساله الى : ' , `${m}`)
-    m.send({ embed: bc })
-    msg.delete();
-    })
-    })
-    reaction2.on("collect", r => {
-    message.channel.send(`**Broadcast Canceled.**`).then(m => m.delete(5000));
-    msg.delete();
-    })
-    })
-    }
-    });
-
-
-
-
-
-
+            if (message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : Users Get this bc | الاعضاء المستلمين`); 
+ message.delete(); 
+};     
+});
 
 
 client.on("message", msg => {
@@ -381,51 +343,57 @@ client.on('message', message => {
 message.reply('**check your DMs! :mailbox_with_mail: **')
 	
 		 
-
-
  message.author.sendMessage(`
-__~~BlueBot~~__ By: iiBlueGamer295YT| SK ♕#1124
+**__BlueBot__** **By: k3o_0#9431
 ╭━━╮╭╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮
 ┃╭╮┃┃┃╱╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮
 ┃╰╯╰┫┃╭╮╭┳━━┫╰╯╰┳━┻╮╭╯
 ┃╭━╮┃┃┃┃┃┃┃━┫╭━╮┃╭╮┃┃
 ┃╰━╯┃╰┫╰╯┃┃━┫╰━╯┃╰╯┃╰╮
 ╰━━━┻━┻━━┻━━┻━━━┻━━┻━╯
-╔[❖════════════❖]╗
-             Prefix = ' - '
-╚[❖════════════❖]╝
-╔[❖════════════❖]╗
-             Admin Commands
-╚[❖════════════❖]╝
-❖ -bc <message> ➾ message all members in server
+╔[❖════════════════════════❖]╗
+           Prefix = [-]
+╚[❖════════════════════════❖]╝
+
+╔[❖════════════════════════❖]╗
+      Admin Room Codmmands
+╚[❖════════════════════════❖]╝
+❖ [make room with name <welcome> ➾ for join-leave log]
+❖ [make room his name 'log']
+❖ -setRoom [make memberCount , Date , Time , Voice online]
+
+╔[❖════════════════════════❖]╗
+        Admin Commands
+╚[❖════════════════════════❖]╝
 ❖ -mute <user> <time> <reason> ➾ mute from server
 ❖ -unmute <user> ➾ unmute from server
 ❖ -kick <user> <reason> ➾ kick from server
-❖ -autoC <role name> than react any message ➾ to make auto role with react
-❖ -openc ➾ to open chat
-❖ -colsec ➾ to close chat
-❖ -clear <number> ➾ clear chat
 ❖ -ban <mention> <reason> ➾ ban member from server
 ❖ -unban <id> ➾ unban from server
-╔[❖════════════❖]╗
-            General  Commands
-╚[❖════════════❖]╝
-❖ -id ➾ your id
-❖ -daily ➾ to get free credit
-❖ -credit ➾ to see your credit
-❖ -trans <@someone> <number> ➾ to get someone credit
-❖ -report ➾ to report someone in server
-❖ -avatar ➾ your avatar account
-❖ -ping ➾ to see ping
-❖ -info ➾ user & bot informations 
-❖ -bot ➾ bot informations
-❖ -server ➾  informations
-❖ make room with name <welcome> ➾ for join-leave log
+❖ -autoC <role name> than react any message ➾ to make auto role with react
+❖ -bc <message> ➾ message all members in server
+❖ -clear <number> ➾ clear chat
+❖ -openc ➾ to open chat
+❖ -colsec ➾ to close chat
+╔[❖════════════════════════❖]╗
+         General  Commands
+╚[❖════════════════════════❖]╝
+❖ -setreply ➾ [Put the message] , [And Put reply]
+❖ -embed ➾ [Write Message] , [The color (CAPITAL)]
+❖ -id ➾ [your id]
+❖ -daily ➾ [to get free credit]
+❖ -credit ➾ [to see your credit]
+❖ -trans <@someone> <number> ➾ [to get someone credit]
+❖ -report ➾ [to report someone in server]
+❖ -avatar ➾ [your avatar account]
+❖ -ping ➾ [to see ping]
+❖ -info ➾ [user & bot informations]
+❖ -bot ➾ [bot informations]
+❖ -server ➾  [server informations]
 ❖ -member ➾ members info
 ❖ -own ➾ bot owner
 ❖ -invite ➾ bot invite link
 ❖ -support ➾ server support link
-❖ -sug <Suggestion> ➾ for Suggestions 
 ❖ -msg ➾  for send msg for someone by bot
 ❖ -send ➾  to send message with react in it to channel 
 ❖ -giveaway <room name> <time in min> <giveaway name> ➾ make giveaway! 
@@ -437,7 +405,7 @@ Server support: https://discord.gg/p4xQ6jv
 ==================================================================
 bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot
 ==================================================================
-`);
+`**);
 
     }
 });  
@@ -449,15 +417,13 @@ client.on('message', message => {
 message.reply('**check your DMs! :mailbox_with_mail: **')
 
  message.author.sendMessage(`
- 
- __~~BlueBot~~__
 ╭━━╮╭╮╱╱╱╱╱╱╭━━╮╱╱╱╭╮
 ┃╭╮┃┃┃╱╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮
 ┃╰╯╰┫┃╭╮╭┳━━┫╰╯╰┳━┻╮╭╯
 ┃╭━╮┃┃┃┃┃┃┃━┫╭━╮┃╭╮┃┃
 ┃╰━╯┃╰┫╰╯┃┃━┫╰━╯┃╰╯┃╰╮
 ╰━━━┻━┻━━┻━━┻━━━┻━━┻━╯
- __created By__: iiBlueGamer295YT| SK ♕#1124 
+ __created By__: k3o_0#9431
 Server Support : https://discord.gg/p4xQ6jv
 bot link : https://discordapp.com/api/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot
 `);
