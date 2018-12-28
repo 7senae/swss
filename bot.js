@@ -39,35 +39,52 @@ client.user.setGame(`$help | FoxGeneral 💙✨ `,"https://www.twitch.tv/S-F")
 });
 
 
+client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help") {
+message.reply('**check your DMs! :mailbox_with_mail: **')
+	
+		 
 
-client.on("message", message => {
- if (message.content === "$help") {
-  const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-      .setDescription('👑أوامر الأعضاء👑')
-          .addField('❖-|$invite', `👑لاضافة البوت الى سيرفرك💯`)
-  	  .addField('❖-|$bot', `🔱لمعرفة معلومات البوت🅱`)
-	  .addField('❖-|$role', `👑لمعرفة الرتب الي في السيرفر🔱`)
-          .addField('❖-|$avatar', `🔰يجبلك الافتار حقك يعني صورة حسابك🔰`)
-	  .addField('❖-|$id', `🆔يجبلك الملف الشخصي حقك🆔`)
-  	  .addField('❖-|$say', `🎆البوت يكرر الكلام الي انت تقوله بدون امبد📝`)
-          .addField('❖-|$server', `➰معلومات عن السيرفر بشكل كامل➰`)
-          .addField('❖-|$ping', `🔰سرعة البوت👑`)
-	  .addField('❖-|$userinfo', `معرفت الشخص مفصل`)
-	  .addField('❖-|$say', `🎆البوت يكرر الكلام الي انت تقوله بدون امبد📝`)
-	  .addField('❖-|$image', `📷يعرض صورة سيرفر⛺`)
-          .addField('❖-|$credits', `👑عشان تشوف الكردتس الخاصة بك👑`)
-          .addField('❖-|$daily', `💲عشان تاخذ الكردتس اليومية الخاصة بك💵`)
-          .addField('❖-|$trans', `💰عشان تعطي لاحد مبلغ من الكردتس الخاصة بك💳`)
-          .addField('❖-|$sug', `🔱لاقتراح شئ و لازم يكون فيه روم اسمه suggestions👑`)
-          .addField('❖-|$BotTime', `🕞عشان تشوف البوت شغال من متى🅱`)
-          .addField('❖-|$info', `🚩عشان تعرف معلومات البوت🚩`)
-          .addField('❖-|$new', `🚩عشان تفتح تكت🚩`)
-          .addField('❖-|$new-', `🚩عشان تقفل تكت🚩`)
-  message.author.send({embed});
-      message.channel.send(":white_check_mark: | Check Your DM تم الأرسال بلخاص")
- }
-});
+
+ message.author.sendMessage(`
+__~~FoxBOTS~~__ By: TEAM FOXS
+╔[❖════════════❖]╗
+             Prefix = ' $ '
+╚[❖════════════❖]╝
+╔[❖════════════❖]╗
+            General  Commands
+╚[❖════════════❖]╝
+❖ $id ➾ ايدي حقك
+❖ $daily ➾ كرديت مجانا
+❖ $credit ➾ معرفة كريدت
+❖ $trans <@someone> <number> ➾ اعطاء كريدت
+❖ $avatar ➾ صوره حقك
+❖ $ping ➾ بينق البوت
+❖ $info ➾ انفو كامل
+❖ $bot ➾ عن البوت
+❖ $server ➾  معلومات عن السيرفر
+❖ make room with name <welcome> ➾ for join-leave log
+❖ $member ➾ تشوف الميمبير
+❖ $invite ➾ bot invite link
+❖ $support ➾ server support link
+❖ $sug <Suggestion> ➾ اقتراح
+❖ $msg ➾  رساله مع امبد
+❖ $send ➾  فيها افري وين
+❖ $giveaway <room name> <time in min> <giveaway name> ➾ make giveaway! 
+❖ $BotTime ➾ وقت البوت
+❖ $new ➾ to make ticket / or $new- to close it 
+ 
+==================================================================
+Server support: https://discord.gg/REKnChB
+==================================================================
+bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=528122045758832640&permissions=8&scope=bot
+==================================================================
+`);
+
+    }
+});  
+ 
 
 
 client.on('message', message => {
