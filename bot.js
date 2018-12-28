@@ -333,7 +333,6 @@ client.on("message", message => {
  
 })
  
-check your DMs! :mailbox_with_mail: 
 client.on('message', msg => {
   if (msg.content === '-help') {
     msg.reply('check your DMs! :mailbox_with_mail:');
