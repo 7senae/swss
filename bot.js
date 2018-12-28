@@ -405,7 +405,7 @@ Server support: https://discord.gg/p4xQ6jv
 ==================================================================
 bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=483499229407477762&permissions=8&scope=bot
 ==================================================================
-`**);
+**`);
 
     }
 });  
